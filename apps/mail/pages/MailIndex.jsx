@@ -1,4 +1,5 @@
-import { mailService } from "../apps/mail/services/mail.service.js"
+import { mailService } from "../services/mail.service.js"
+import { MailList } from '../cmps/MailList.jsx'
 
 const { useEffect, useState } = React
 
@@ -9,9 +10,9 @@ export function MailIndex() {
     useEffect(() => {
         loadMails()
     }, [])
-    
+
     function loadMails() {
-        carService.query()
+        mailService.query()
             .then(mails => {
                 setMails(mails)
             })
@@ -20,14 +21,14 @@ export function MailIndex() {
             })
     }
 
-    if (!cars) return <div>Loading...</div>
+    if (!mails) return <div>Loading...</div>
     return (
         <section className="mail-index">
             {/* <button><Link to="/car/edit">Add Car</Link></button> */}
             {/* <CarFilter filterBy={filterBy} onSetFilter={onSetFilter} /> */}
             <MailList
-                cars={cars}
-                // onRemoveCar={onRemoveCar}
+                mails={mails}
+            // onRemoveCar={onRemoveCar}
             />
         </section>
     )
