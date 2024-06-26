@@ -1,7 +1,7 @@
 // mail service
 
-import { utilService } from './util.service.js'
-import { storageService } from './async-storage.service.js'
+import { utilService } from '../../../services/util.service.js'
+import { storageService } from '../../../services/async-storage.service.js'
 
 const MAIL_KEY = 'mailDB'
 _createMails()
@@ -68,15 +68,17 @@ function getFilterFromSearchParams(searchParams) {
 }
 
 function _createMails() {
-    let mails = utilService.loadFromStorage(MAIL_KEY)
+    let mails = storageService.loadFromStorage(MAIL_KEY)
     if (!mails || !mails.length) {
         mails = []
         mails.push(_createMail())
         mails.push(_createMail())
         mails.push(_createMail())
         mails.push(_createMail())
-        utilService.saveToStorage(MAIL_KEY, mails)
+        storageService.saveToStorage(MAIL_KEY, mails)
+        // .catch(err => console.error('Error loading mails from storage:', err));
     }
+    
 }
 
 function _createMail() {
@@ -91,7 +93,7 @@ function _createMail() {
         from: 'momo@momo.com',
         to: 'user@appsus.com'
     }
-        mail.id = utilService.makeId()
+    mail.id = utilService.makeId()
     return mail
 }
 
@@ -122,4 +124,3 @@ const email = {
     from: 'momo@momo.com',
     to: 'user@appsus.com'
 }
-
