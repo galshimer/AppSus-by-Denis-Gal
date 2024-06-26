@@ -7,6 +7,7 @@ export function MailPreview({ mail }) {
             <span>Subject: {subject}</span>
             <h4>Body: {body}</h4>
             
+            
             <h5>From: {from}</h5>
             {/* <img src={`../assets/img/${car.vendor}.png`} alt="" /> */}
         </article>
