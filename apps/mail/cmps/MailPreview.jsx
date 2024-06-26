@@ -4,9 +4,9 @@ export function MailPreview({ mail }) {
     const { subject, body, from } = mail
     return (
         <article className="car-preview">
-            <span>Subject: {subject}</span>
+            <span>Subject!!!!: {subject}</span>
             <h4>Body: {body}</h4>
-            
+
             
             <h5>From: {from}</h5>
             {/* <img src={`../assets/img/${car.vendor}.png`} alt="" /> */}
