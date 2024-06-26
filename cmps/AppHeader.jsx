@@ -1,6 +1,23 @@
-const { Link, NavLink } = ReactRouterDOM
+import { eventBusService } from "../services/event-bus.service.js"
+
+const { useEffect } = React
+const { Link, NavLink, useNavigate } = ReactRouterDOM
 
 export function AppHeader() {
+    const navigate = useNavigate()
+    useEffect(() => {
+        // eventBusService.on('stam', value => {
+        //     console.log('value:', value)
+        // })
+
+        return () => {
+
+        }
+    }, [])
+
+    // function onBack() {
+    //     navigate(-1)
+    // }
 
     return <header className="app-header">
         <Link to="/">
