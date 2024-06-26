@@ -1,15 +1,15 @@
+const { Link } = ReactRouterDOM
 
-export function MailPreview({ mail }) {
+export function MailPreview({ mail, onRemoveMail }) {
 
     const { subject, body, from } = mail
     return (
-        <article className="car-preview">
-            <span>Subject!!!!: {subject}</span>
-            <h4>Body: {body}</h4>
-
-            
-            <h5>From: {from}</h5>
-            {/* <img src={`../assets/img/${car.vendor}.png`} alt="" /> */}
+        <article className="mail-preview">
+            <span>{from} {subject} {body}
+                <button onClick={() => onRemoveMail(mail.id)}>Remove</button>
+                <button><Link to={`/mail/${mail.id}`}>Details</Link></button>
+                <button><Link to={`/mail/edit/${mail.id}`}>Edit</Link></button>
+            </span>
         </article>
     )
 }
