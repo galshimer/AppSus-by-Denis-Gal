@@ -21,10 +21,11 @@ export function MailDetails() {
     }
 
     if (!mail) return <div>Loading...</div>
+    const formattedDate = new Date(mail.createdAt).toLocaleString()
     return (
         <section className="mail-details">
             <h1>Subject: {mail.subject}</h1>
-            <h1>{mail.createdAt}</h1>
+            <h1>{formattedDate}</h1>
             <p>{mail.body}</p>
             <button ><Link to="/mail">Back</Link></button>
             <section>
