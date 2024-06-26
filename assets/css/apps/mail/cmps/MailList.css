@@ -1,1 +1,5 @@
  /* mail list */
+
+ ul .mail-list {
+    list-style-type: none;
+ }

@@ -4,7 +4,6 @@ import { MailList } from '../cmps/MailList.jsx'
 const { useEffect, useState } = React
 
 export function MailIndex() {
-
     const [mails, setMails] = useState(null)
 
     useEffect(() => {
@@ -21,14 +20,20 @@ export function MailIndex() {
             })
     }
 
+    function onRemoveMail(mailId) {
+        mailService.remove(mailId).then(() => {
+            setMails(prevMails => prevMails.filter(mail => mail.id !== mailId))
+        }).catch(err => {
+            console.log('Failed to remove mail:', err)
+        })
+    }
+
     if (!mails) return <div>Loading...</div>
     return (
         <section className="mail-index">
-            {/* <button><Link to="/car/edit">Add Car</Link></button> */}
-            {/* <CarFilter filterBy={filterBy} onSetFilter={onSetFilter} /> */}
             <MailList
                 mails={mails}
-            // onRemoveCar={onRemoveCar}
+                onRemoveMail={onRemoveMail}
             />
         </section>
     )
