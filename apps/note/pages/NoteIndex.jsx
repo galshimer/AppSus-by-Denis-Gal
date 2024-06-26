@@ -1,7 +1,7 @@
 
 // const { Link, useSearchParams } = ReactRouterDOM
 
-import { NoteList } from "../cmps/NoteList.jsx";
+import { NoteList } from "../cmps/NoteList.jsx"
 import { noteService } from "../services/note.service.js"
 // import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
 
@@ -10,7 +10,7 @@ const { useEffect, useState } = React
 export function NoteIndex() {
     const [notes, setNotes] = useState(null)
 
-    
+
     useEffect(() => {
         loadNotes()
     }, [])
@@ -25,19 +25,19 @@ export function NoteIndex() {
             })
     }
 
-    // function onRemoveCar(carId) {
-    //     carService.remove(carId)
-    //         .then(() => {
-    //             setCars(cars =>
-    //                 cars.filter(car => car.id !== carId)
-    //             )
-    //             showSuccessMsg(`Car (${carId}) removed successfully!`)
-    //         })
-    //         .catch(err => {
-    //             console.log('Problems removing car:', err)
-    //             showErrorMsg(`Having problems removing car!`)
-    //         })
-    // }
+    function onRemoveNote(noteId) {
+        noteService.remove(noteId)
+            .then(() => {
+                setNotes(notes =>
+                    notes.filter(note => note.id !== noteId)
+                )
+                showSuccessMsg(`note (${noteId}) removed successfully!`)
+            })
+            .catch(err => {
+                console.log('Problems removing note:', err)
+                showErrorMsg(`Having problems removing car!`)
+            })
+    }
 
     // function onSetFilter(filterBy) {
     //     setFilterBy(prevFilter => ({ ...prevFilter, ...filterBy }))
@@ -48,9 +48,9 @@ export function NoteIndex() {
 
     return (
         <section className="note-index">
-            <NoteList
-                notes={notes}
-            />
+            <NoteList 
+            notes={notes}
+            onRemoveNote={onRemoveNote} />
         </section>
     )
 }

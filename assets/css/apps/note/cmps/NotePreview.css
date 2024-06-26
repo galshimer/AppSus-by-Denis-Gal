@@ -1,9 +1,6 @@
-.note{
-    border-radius: 12px;
-    width:fit-content;
 
-}
-
-.todo{
+.note-preview{
     background-color: #d4e4ed;
+    border-radius: 12px;
+    height: fit-content;
 }

@@ -5,10 +5,15 @@ export function NotePreview({ note }) {
 
     let content
     if (type === 'NoteTxt') {
-        content = <p>{info.txt}</p>
+        content = (
+            <div className="note text">
+                {info.txt}
+            </div>
+        )
+
     } else if (type === 'NoteImg') {
         content = (
-            <div>
+            <div className="note photo">
                 <img src={info.url} alt={info.title} />
                 <h4>{info.title}</h4>
             </div>
