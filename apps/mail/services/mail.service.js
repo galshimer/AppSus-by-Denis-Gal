@@ -11,7 +11,7 @@ export const mailService = {
     get,
     remove,
     save,
-    getEmptyMail,
+    // getEmptyMail,
     getDefaultFilter,
     getFilterFromSearchParams
 }
@@ -57,7 +57,6 @@ function getDefaultFilter() {
     return { txt: '', minSpeed: '' }
 }
 
-
 function getFilterFromSearchParams(searchParams) {
     // return Object.fromEntries(searchParams)
     const txt = searchParams.get('txt') || ''
@@ -95,7 +94,6 @@ function _createMail() {
         mail.id = utilService.makeId()
     return mail
 }
-
 
 function _setNextPrevMailId(mail) {
     return storageService.query(MAIL_KEY).then((mails) => {
