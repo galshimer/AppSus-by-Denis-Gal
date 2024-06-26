@@ -43,6 +43,10 @@ function save(note) {
     }
 }
 
+function getEmptyNote(text = '') {
+    return { text}
+}
+
 function _createNotes() {
     let notes = storageService.loadFromStorage(NOTE_KEY)
     if (!notes || !notes.length) {
@@ -53,7 +57,7 @@ function _createNotes() {
                 type: 'NoteTxt',
                 isPinned: false,
                 style: {
-                    backgroundColor: '#00d'
+                    backgroundColor: '#d3bfdb'
                 },
                 info: {
                     txt: 'Fullstack Me Baby!'
@@ -93,7 +97,19 @@ function _createNotes() {
 
                     ]
                 }
-            }
+            },
+            {
+                id: 'n104',
+                createdAt: 1112222,
+                type: 'NoteTxt',
+                isPinned: false,
+                style: {
+                    backgroundColor: '#d3bfdb'
+                },
+                info: {
+                    txt: 'Fullstack Me Baby!'
+                }
+            },
         ]
         storageService.saveToStorage(NOTE_KEY, notes)
     }
