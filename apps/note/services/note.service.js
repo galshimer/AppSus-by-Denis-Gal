@@ -64,6 +64,11 @@ function _createNotes() {
                 createdAt: 1112223,
                 type: 'NoteImg',
                 isPinned: false,
+                style:
+                {
+                    backgroundColor:
+                        '#d4e4ed'
+                },
                 info: {
                     url: 'http://some-img/me',
                     title: 'Bobi and Me'
@@ -77,11 +82,18 @@ function _createNotes() {
                 createdAt: 1112224,
                 type: 'NoteTodos',
                 isPinned: false,
+                style:
+                {
+                    backgroundColor:
+                        '#fff8b8'
+                },
                 info: {
                     title: 'Get my stuff together',
                     todos: [
-                        { txt: 'Driving license', doneAt: null },
-                        { txt: 'Coding power', doneAt: 187111111 }
+                        { txt: 'Diving license', doneAt: null },
+                        { txt: 'Diving watch', doneAt: 187111111 },
+                        { txt: 'Camera', doneAt: null }
+
                     ]
                 }
             }
