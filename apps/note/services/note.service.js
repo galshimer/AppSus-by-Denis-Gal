@@ -51,7 +51,7 @@ function _createNotes() {
                 id: 'n101',
                 createdAt: 1112222,
                 type: 'NoteTxt',
-                isPinned: true,
+                isPinned: false,
                 style: {
                     backgroundColor: '#00d'
                 },
@@ -72,16 +72,13 @@ function _createNotes() {
                 info: {
                     url: 'http://some-img/me',
                     title: 'Bobi and Me'
-                },
-                style: {
-                    backgroundColor: '#00d'
                 }
             },
             {
                 id: 'n103',
                 createdAt: 1112224,
                 type: 'NoteTodos',
-                isPinned: false,
+                isPinned: true,
                 style:
                 {
                     backgroundColor:
