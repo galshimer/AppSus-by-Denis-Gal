@@ -8,7 +8,6 @@ export function MailPreview({ mail, onRemoveMail }) {
             <span>{from} {subject} {body}
                 <button onClick={() => onRemoveMail(mail.id)}>Remove</button>
                 <button><Link to={`/mail/${mail.id}`}>Details</Link></button>
-                <button><Link to={`/mail/edit/${mail.id}`}>Edit</Link></button>
             </span>
         </article>
     )
