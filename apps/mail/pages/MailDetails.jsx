@@ -4,11 +4,13 @@ import { mailService } from "../services/mail.service.js"
 
 const { useEffect, useState } = React
 
-export function MailDetails() {
+export function MailDetails({ onRemoveMail }) {
 
     const [mail, setMail] = useState(null)
 
     const { mailId } = useParams()
+
+    const [isMailRemoved, setIsMailRemoved] = useState(false)
 
     useEffect(() => {
         loadMail()
@@ -19,6 +21,18 @@ export function MailDetails() {
         mailService.get(mailId)
             .then(mail => setMail(mail))
     }
+
+    function onRemoveMail(mailId) {
+        mailService.remove(mailId)
+            .then(() => {
+                console.log(`Mail with ID ${mailId} removed successfully!`);
+                setIsMailRemoved(true); // Set a flag indicating removal
+            })
+            .catch(err => {
+                console.error('Failed to remove mail:', err);
+            });
+    }
+
 
     if (!mail) return <div>Loading...</div>
     const formattedDate = new Date(mail.createdAt).toLocaleString()
@@ -42,7 +56,16 @@ export function MailDetails() {
                 <button className="nav-btn">
                     <Link to={`/mail/${mail.nextMailId}`}>Next Mail</Link>
                 </button>
+                <button className="remove-btn" onClick={() => onRemoveMail(mail.id)}>
+                    Remove
+                </button>
             </div>
+            {isMailRemoved && (
+                <div>
+                    Email removed successfully! You can navigate back to the inbox.
+                    <Link to="/mail">Back to Inbox</Link>
+                </div>
+            )}
         </section>
     )
 }
