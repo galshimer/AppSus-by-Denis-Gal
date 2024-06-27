@@ -1,5 +1,4 @@
-
-.mail-details {
+.mail-filter {
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -7,35 +6,25 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.mail-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.mail-filter h2 {
+    font-size: 20px;
     margin-bottom: 20px;
 }
 
-.mail-header h1 {
-    font-size: 24px;
-    margin: 0;
-}
-
-.mail-date {
-    color: #888;
-    font-size: 14px;
-}
-
-.mail-body {
-    font-size: 16px;
-    line-height: 1.5;
-    margin-bottom: 20px;
-}
-
-.mail-actions {
+.mail-filter form {
     display: flex;
+    flex-direction: column;
     gap: 10px;
 }
 
-.mail-actions button {
+.mail-filter input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.mail-filter button {
     background-color: #4285f4;
     color: white;
     border: none;
@@ -45,6 +34,6 @@
     text-decoration: none;
 }
 
-.mail-actions button:hover {
+.mail-filter button:hover {
     background-color: #357ae8;
 }
