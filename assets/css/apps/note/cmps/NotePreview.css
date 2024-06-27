@@ -10,6 +10,20 @@
 .btn-note {
     display: flex;
     justify-content: space-evenly;
-    
+
     padding-top: 5px;
+    display: hidden;
+}
+
+.btn {
+    cursor: pointer;
+}
+
+.btn-note {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.single-note:hover .btn-note {
+    opacity: 1;
 }

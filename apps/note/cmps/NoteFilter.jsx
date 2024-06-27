@@ -40,8 +40,8 @@ export function NoteFilter({ filterBy, onSetFilter }) {
         <section className="note-filter">
             <div className="search-container">
                 <form onSubmit={onSubmitFilter}>
-                    <input className="search" value={filterByToEdit.txt || ''} onChange={handleChange} placeholder="Search" name="txt" type="text" id="txt" />
-                    <button>Submit</button>
+                    <input className="search btn" value={filterByToEdit.txt || ''} onChange={handleChange} placeholder="Search" name="txt" type="text" id="txt" />
+                    <button className="btn">Submit</button>
                 </form>
             </div>
         </section>

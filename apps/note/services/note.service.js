@@ -1,6 +1,6 @@
 // note service
 import { storageService } from "../../../services/async-storage.service.js"
-// import { utilService } from "../../../services/util.service.js"
+import { utilService } from "../../../services/util.service.js"
 
 const NOTE_KEY = 'noteDB'
 _createNotes()
@@ -44,9 +44,9 @@ function save(note) {
     }
 }
 
-// function getEmptyNote(text = '') {
-//     return { text}
-// }
+function getEmptyNote(text = '') {
+    return { text }
+}
 
 function _createNotes() {
     let notes = storageService.loadFromStorage(NOTE_KEY)
@@ -61,26 +61,47 @@ function _createNotes() {
                     backgroundColor: '#d3bfdb'
                 },
                 info: {
-                    txt: 'Fullstack Me Baby! Fullstack Me Baby! Fullstack Me Baby!'
+                    txt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'
                 }
             },
             {
                 id: 'n102',
+                createdAt: 1112224,
+                type: 'NoteTodos',
+                isPinned: true,
+                style:
+                {
+                    backgroundColor:
+                        '#e2f6d3'
+                },
+                info: {
+                    title: 'Get my stuff together',
+                    todos: [
+                        { txt: 'Diving license', doneAt: null },
+                        { txt: 'Diving watch', doneAt: 187111111 },
+                        { txt: 'Camera', doneAt: null },
+                        { txt: 'Watch', doneAt: null },
+                        { txt: 'Flippers', doneAt: null }
+
+                    ]
+                }
+            },
+            {
+                id: 'n103',
                 createdAt: 1112223,
                 type: 'NoteImg',
                 isPinned: false,
                 style:
                 {
-                    backgroundColor:
-                        '#d4e4ed'
+                    backgroundColor: '#d3bfdb'
                 },
                 info: {
-                    url:'https://i.pinimg.com/736x/22/bd/56/22bd566c4bbe272956db066ca7522d8e.jpg',
-                    title: 'Bobi and Me'
+                    url: 'https://i.pinimg.com/736x/22/bd/56/22bd566c4bbe272956db066ca7522d8e.jpg',
+                    title: 'Asian virginsbower'
                 }
             },
             {
-                id: 'n103',
+                id: 'n104',
                 createdAt: 1112224,
                 type: 'NoteTodos',
                 isPinned: true,
@@ -100,7 +121,7 @@ function _createNotes() {
                 }
             },
             {
-                id: 'n104',
+                id: 'n105',
                 createdAt: 1112222,
                 type: 'NoteTxt',
                 isPinned: false,
@@ -108,7 +129,49 @@ function _createNotes() {
                     backgroundColor: '#d3bfdb'
                 },
                 info: {
-                    txt: 'Fullstack Me Baby!'
+                    txt: 'Etiam a velit fringilla'
+                }
+            },
+            {
+                id: 'n106',
+                createdAt: 1112222,
+                type: 'NoteTxt',
+                isPinned: false,
+                style: {
+                    backgroundColor: '#e9e3d4'
+                },
+                info: {
+                    txt: 'Proin at ipsum dignissim, gravida lacus at, suscipit metus. Curabitur eu felis magna. Donec facilisis, mauris in luctus efficitur, quam nisl blandit turpis, at euismod diam leo non enim.'
+                }
+            },
+            {
+                id: 'n107',
+                createdAt: 1112223,
+                type: 'NoteImg',
+                isPinned: false,
+                style:
+                {
+                    backgroundColor:
+                        '#d4e4ed'
+                },
+                info: {
+                    url: 'https://t4.ftcdn.net/jpg/06/25/06/19/360_F_625061934_exx8DIaKNJj0VSFBRDcNZeuwiDpN17PI.jpg',
+                    title: 'Camellia'
+                }
+            },
+            {
+                id: 'n108',
+                createdAt: 1112223,
+                type: 'NoteImg',
+                isPinned: false,
+                style:
+                {
+                    backgroundColor:
+                        '#fff8b8'
+                },
+                info: {
+                    url: 'https://www.stemsmarket.com/pick-up/wp-content/uploads/sites/2/2018/06/gerb_enjoy_xl.jpg',
+                    title: 'Barberton daisy'
                 }
             },
         ]
@@ -133,4 +196,10 @@ function getFilterFromSearchParams(searchParams) {
     return {
         txt
     }
+}
+
+function _createNote(txt) {
+    const note = getEmptyNote(txt)
+    note.id = utilService.makeId()
+    return note
 }

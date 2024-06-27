@@ -32,6 +32,12 @@
      padding: 7px;
      height: fit-content;
      margin: 10px 0;
+     color: #202124;
+     font-family: Roboto;
+ }
+
+ .text{
+    color: #202124;
  }
 
  
