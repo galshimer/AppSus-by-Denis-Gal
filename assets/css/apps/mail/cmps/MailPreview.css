@@ -1,54 +1,21 @@
-
-
 .mail-preview {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #ddd;
-    padding: 10px;
-    transition: background-color 0.2s;
-}
+    display: grid;
+    grid-auto-flow: column;
 
-.mail-preview:hover {
-    background-color: #f1f1f1;
+    justify-content: space-between;
+
+    height: 40px;
+
+    font-size: 16px;
+    
 }
 
 .mail-info {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    gap: 50px;
+    text-align: start;
 }
 
-.mail-from {
-    font-weight: bold;
-    color: #555;
-}
-
-.mail-subject {
-    margin-top: 5px;
-    font-size: 14px;
-    color: #333;
-}
-
-.mail-body {
-    margin-top: 5px;
-    font-size: 18px;
-    color: #777;
-}
-
-.mail-actions {
-    display: flex;
-    gap: 10px;
-}
-
-.remove-btn, .details-btn {
-    background-color: #f1f1f1;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    padding: 5px 10px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.remove-btn:hover, .details-btn:hover {
-    background-color: #ddd;
-}

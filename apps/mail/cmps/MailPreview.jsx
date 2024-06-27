@@ -1,7 +1,7 @@
 const { Link } = ReactRouterDOM
 
 export function MailPreview({ mail, onRemoveMail }) {
-    const { subject, body, from } = mail
+    const { subject, body, from, createdAt } = mail
     return (
         <article className="mail-preview">
             <div className="mail-info">
@@ -13,6 +13,7 @@ export function MailPreview({ mail, onRemoveMail }) {
                 <button className="remove-btn" onClick={() => onRemoveMail(mail.id)}>Remove</button>
                 <button className="details-btn"><Link to={`/mail/${mail.id}`}>Details</Link></button>
             </div>
+                <span className="mail-date">{createdAt}</span>
         </article>
     )
 }
