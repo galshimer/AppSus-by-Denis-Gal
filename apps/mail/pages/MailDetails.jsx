@@ -22,16 +22,27 @@ export function MailDetails() {
 
     if (!mail) return <div>Loading...</div>
     const formattedDate = new Date(mail.createdAt).toLocaleString()
+
     return (
         <section className="mail-details">
-            <h1>Subject: {mail.subject}</h1>
-            <h1>{formattedDate}</h1>
-            <p>{mail.body}</p>
-            <button ><Link to="/mail">Back</Link></button>
-            <section>
-                <button ><Link to={`/mail/${mail.prevMailId}`}>Prev Mail</Link></button>
-                <button ><Link to={`/mail/${mail.nextMailId}`}>Next Mail</Link></button>
-            </section>
+            <div className="mail-header">
+                <h1>{mail.subject}</h1>
+                <span className="mail-date">{formattedDate}</span>
+            </div>
+            <div className="mail-body">
+                <p>{mail.body}</p>
+            </div>
+            <div className="mail-actions">
+                <button className="back-btn">
+                    <Link to="/mail">Back</Link>
+                </button>
+                <button className="nav-btn">
+                    <Link to={`/mail/${mail.prevMailId}`}>Prev Mail</Link>
+                </button>
+                <button className="nav-btn">
+                    <Link to={`/mail/${mail.nextMailId}`}>Next Mail</Link>
+                </button>
+            </div>
         </section>
     )
 }
