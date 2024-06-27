@@ -14,6 +14,7 @@ const email = {
     subject: 'Miss you!',
     body: 'Would love to catch up sometimes',
     isRead: false,
+    isStarred: false,
     sentAt: 1551133930594,
     removedAt: null,
     from: 'momo@momo.com',
@@ -28,7 +29,6 @@ export const mailService = {
     get,
     remove,
     save,
-    // getEmptyMail,
     getDefaultFilter,
     getFilterFromSearchParams,
     generateDemoMails
@@ -37,18 +37,19 @@ export const mailService = {
 function query(filterBy = {}) {
     return storageService.query(MAIL_KEY)
         .then(mails => {
-            console.log('mails:', mails)
+            console.log('mails:', mails);
 
             if (filterBy.txt) {
-                const regExp = new RegExp(filterBy.txt, 'i')
-                mails = mails.filter(mail => regExp.test(mail.vendor))
+                const regExp = new RegExp(filterBy.txt, 'i');
+                mails = mails.filter(mail => 
+                    regExp.test(mail.subject) || regExp.test(mail.body)
+                );
             }
-            if (filterBy.minSpeed) {
-                mails = mails.filter(mail => mail.speed >= filterBy.minSpeed)
-            }
-            return mails
-        })
+
+            return mails;
+        });
 }
+
 
 function get(mailId) {
     return storageService.get(MAIL_KEY, mailId)
@@ -66,10 +67,6 @@ function save(mail) {
         return storageService.post(MAIL_KEY, mail)
     }
 }
-
-// function getEmptyMail(vendor = '', speed = '') {
-//     return { vendor, speed }
-// }
 
 function getDefaultFilter() {
     return { txt: '', minSpeed: '' }

@@ -63,7 +63,6 @@ export function MailDetails({ onRemoveMail }) {
             {isMailRemoved && (
                 <div>
                     Email removed successfully! You can navigate back to the inbox.
-                    <Link to="/mail">Back to Inbox</Link>
                 </div>
             )}
         </section>

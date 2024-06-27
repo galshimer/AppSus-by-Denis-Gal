@@ -1,73 +1,42 @@
+const { useState, useEffect, useRef } = React
+import { utilService } from '../services/util.service.js'
+
 export function MailFilter({ filterBy, onSetFilter }) {
+    const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
+    const onSetFilterDebounce = useRef(utilService.debounce(onSetFilter, 700))
+
+    useEffect(() => {
+        onSetFilterDebounce.current(filterByToEdit)
+    }, [filterByToEdit])
+
     function handleChange({ target }) {
         const field = target.name
-        const value = target.type === 'checkbox' ? target.checked : target.value
-        onSetFilter({ [field]: value })
+        let value = target.value
+        setFilterByToEdit(prevFilter => ({ ...prevFilter, [field]: value }))
     }
 
-    function handleLabelChange({ target }) {
-        const value = target.value
-        const labels = filterBy.labels.includes(value)
-            ? filterBy.labels.filter(label => label !== value)
-            : [...filterBy.labels, value]
-        onSetFilter({ labels })
+    function onSubmitFilter(ev) {
+        ev.preventDefault()
+        onSetFilter(filterByToEdit)
     }
+
+    const { txt } = filterByToEdit
 
     return (
-        <div className="mail-filter">
-            <input
-                type="text"
-                name="txt"
-                placeholder="Search emails"
-                value={filterBy.txt}
-                onChange={handleChange}
-            />
-            <div className="folder-filter">
-                <button name="status" value="inbox" onClick={handleChange}>Inbox</button>
-                <button name="status" value="sent" onClick={handleChange}>Sent</button>
-                <button name="status" value="drafts" onClick={handleChange}>Drafts</button>
-                <button name="status" value="trash" onClick={handleChange}>Trash</button>
-            </div>
-            <div className="extra-filters">
-                <label>
-                    <input
-                        type="checkbox"
-                        name="isRead"
-                        checked={filterBy.isRead || false}
-                        onChange={handleChange}
-                    />
-                    Read
-                </label>
-                <label>
-                    <input
-                        type="checkbox"
-                        name="isStared"
-                        checked={filterBy.isStared || false}
-                        onChange={handleChange}
-                    />
-                    Starred
-                </label>
-                <div className="label-filter">
-                    <label>
-                        <input
-                            type="checkbox"
-                            value="important"
-                            checked={filterBy.labels.includes('important')}
-                            onChange={handleLabelChange}
-                        />
-                        Important
-                    </label>
-                    <label>
-                        <input
-                            type="checkbox"
-                            value="romantic"
-                            checked={filterBy.labels.includes('romantic')}
-                            onChange={handleLabelChange}
-                        />
-                        Romantic
-                    </label>
-                </div>
-            </div>
-        </div>
+        <section className="mail-filter">
+            <h2>Filter Emails</h2>
+            <form onSubmit={onSubmitFilter}>
+                <label htmlFor="txt">Search</label>
+                <input
+                    value={txt}
+                    onChange={handleChange}
+                    name="txt"
+                    type="text"
+                    id="txt"
+                    placeholder="Search by subject or content"
+                />
+                <button>Submit</button>
+            </form>
+        </section>
     )
 }
