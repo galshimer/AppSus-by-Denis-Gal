@@ -1,6 +1,15 @@
-
-.note-preview{
+.note-preview {
     border-radius: 12px;
     height: fit-content;
+}
+
+.note-preview:hover {
+    display: block;
+}
+
+.btn-note {
+    display: flex;
+    justify-content: space-evenly;
     
+    padding-top: 5px;
 }

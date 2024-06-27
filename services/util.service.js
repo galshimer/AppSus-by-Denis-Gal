@@ -6,6 +6,7 @@ export const utilService = {
     padNum,
     getDayName,
     getMonthName,
+    debounce
 }
 
 function makeId(length = 6) {
@@ -58,4 +59,14 @@ function getMonthName(date) {
         "July", "August", "September", "October", "November", "December"
     ]
     return monthNames[date.getMonth()]
+}
+
+function debounce(func, delay) {
+    let timeoutId
+    return (...args) => {
+        clearTimeout(timeoutId)
+        timeoutId = setTimeout(() => {
+            func(...args)
+        }, delay)
+    }
 }

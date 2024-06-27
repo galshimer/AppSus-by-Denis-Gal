@@ -63,3 +63,43 @@
 //     )
 // }
 
+import { useState } from 'react';
+
+export function NoteEditor({ note, onSaveNote }) {
+    const [noteToEdit, setNoteToEdit] = useState({ ...note });
+
+    function handleChange({ target }) {
+        const field = target.name;
+        let value = target.value;
+
+        switch (target.type) {
+            case 'number':
+            case 'range':
+                value = +value;
+                break;
+            case 'checkbox':
+                value = target.checked;
+                break;
+            default:
+                break;
+        }
+
+        setNoteToEdit((prevNote) => ({ ...prevNote, [field]: value }));
+    }
+
+    function onSubmit(ev) {
+        ev.preventDefault();
+        onSaveNote(noteToEdit);
+    }
+
+    return (
+        <form onSubmit={onSubmit}>
+            <label htmlFor="txt">Text</label>
+            <input value={noteToEdit.info.txt || ''} onChange={handleChange} name="txt" type="text" id="txt" />
+            {/* Add other fields as necessary */}
+            <button>Save</button>
+        </form>
+    );
+}
+
+

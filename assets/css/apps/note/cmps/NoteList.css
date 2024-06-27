@@ -1,8 +1,37 @@
  /* note list */
+ /* .main {
+     display: grid;
+     grid-template-columns: 1fr 3fr;
+
+ } */
+
  .note-list {
-    list-style: none;
-    padding: 15px 0 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 15px;
-}
+     list-style: none;
+     column-count: 3;
+     padding-right: 10px;
+ }
+
+ .note-list>* {
+     break-inside: avoid;
+ }
+
+ .search {
+     font-size: 16px;
+     background-color: #f1f3f4;
+ }
+
+ .search-container {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     margin: 20px 0;
+ }
+
+ .single-note {
+     border-radius: 12px;
+     padding: 7px;
+     height: fit-content;
+     margin: 10px 0;
+ }
+
+ 

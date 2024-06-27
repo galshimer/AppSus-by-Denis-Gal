@@ -10,6 +10,7 @@ export const noteService = {
     get,
     remove,
     save,
+    getFilterFromSearchParams
 }
 
 function query(filterBy = {}) {
@@ -43,9 +44,9 @@ function save(note) {
     }
 }
 
-function getEmptyNote(text = '') {
-    return { text}
-}
+// function getEmptyNote(text = '') {
+//     return { text}
+// }
 
 function _createNotes() {
     let notes = storageService.loadFromStorage(NOTE_KEY)
@@ -60,7 +61,7 @@ function _createNotes() {
                     backgroundColor: '#d3bfdb'
                 },
                 info: {
-                    txt: 'Fullstack Me Baby!'
+                    txt: 'Fullstack Me Baby! Fullstack Me Baby! Fullstack Me Baby!'
                 }
             },
             {
@@ -74,7 +75,7 @@ function _createNotes() {
                         '#d4e4ed'
                 },
                 info: {
-                    url: 'http://some-img/me',
+                    url:'https://i.pinimg.com/736x/22/bd/56/22bd566c4bbe272956db066ca7522d8e.jpg',
                     title: 'Bobi and Me'
                 }
             },
@@ -124,4 +125,12 @@ function _setNextPrevNoteId(note) {
         note.prevNoteId = prevNote.id
         return note
     })
+}
+
+function getFilterFromSearchParams(searchParams) {
+    // return Object.fromEntries(searchParams)
+    const txt = searchParams.get('txt') || ''
+    return {
+        txt
+    }
 }
