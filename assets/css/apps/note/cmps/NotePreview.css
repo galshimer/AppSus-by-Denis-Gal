@@ -22,8 +22,44 @@
 .btn-note {
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
+
 }
 
 .single-note:hover .btn-note {
     opacity: 1;
+}
+
+.single-note:hover .pin-icon {
+    display: inline-block;
+}
+
+h4 {
+    font-size: 16px;
+}
+
+.pin-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 6px;
+    margin-right: 6px;
+    display: none;
+    color: #5f6368;
+    opacity: 50%;
+    cursor: pointer;
+
+}
+
+.single-note:hover .pin-icon {
+    display: inline-block;
+}
+
+.single-note {
+    position: relative;
+}
+
+.pin-icon:hover {
+    color: #202124;
+    opacity: 80%;
+
 }
