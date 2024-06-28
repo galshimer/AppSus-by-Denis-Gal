@@ -23,20 +23,20 @@ export function MailFilter({ filterBy, onSetFilter }) {
     const { txt } = filterByToEdit
 
     return (
+        
         <section className="mail-filter">
-            <h2>Filter Emails</h2>
             <form onSubmit={onSubmitFilter}>
-                <label htmlFor="txt">Search</label>
+                <label htmlFor="txt"></label>
                 <input
                     value={txt}
                     onChange={handleChange}
                     name="txt"
                     type="text"
                     id="txt"
-                    placeholder="Search by subject or content"
+                    placeholder="Search mail"
                 />
-                <button>Submit</button>
             </form>
         </section>
+         
     )
 }
