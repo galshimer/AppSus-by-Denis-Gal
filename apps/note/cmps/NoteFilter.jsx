@@ -31,17 +31,16 @@ export function NoteFilter({ filterBy, onSetFilter }) {
     }
 
 
-    function onSubmitFilter(ev) {
-        ev.preventDefault()
-        onSetFilter(filterByToEdit)
-    }
+    // function onSubmitFilter(ev) {
+    //     ev.preventDefault()
+    //     onSetFilter(filterByToEdit)
+    // }
 
     return (
         <section className="note-filter">
             <div className="search-container">
-                <form onSubmit={onSubmitFilter}>
+                <form onSubmit={(ev) => ev.preventDefault()}>
                     <input className="search btn" value={filterByToEdit.txt || ''} onChange={handleChange} placeholder="Search" name="txt" type="text" id="txt" />
-                    <button className="btn">Submit</button>
                 </form>
             </div>
         </section>

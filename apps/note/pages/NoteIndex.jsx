@@ -4,7 +4,7 @@ const { Link, useSearchParams } = ReactRouterDOM
 import { NoteFilter } from "../cmps/NoteFilter.jsx"
 import { NoteList } from "../cmps/NoteList.jsx"
 import { noteService } from "../services/note.service.js"
-// import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
+import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
 
 const { useEffect, useState } = React
 const { Outlet } = ReactRouterDOM
@@ -32,8 +32,7 @@ export function NoteIndex() {
     }
 
     function onRemoveNote(noteId) {
-        if(confirm('are you sure?')){
-            noteService.remove(noteId)
+        noteService.remove(noteId)
             .then(() => {
                 setNotes(notes =>
                     notes.filter(note => note.id !== noteId)
@@ -44,7 +43,6 @@ export function NoteIndex() {
                 console.log('Problems removing note:', err)
                 showErrorMsg(`Having problems removing note!`)
             })
-        }
     }
 
     function onSetFilter(filterBy) {
@@ -61,7 +59,7 @@ export function NoteIndex() {
             <NoteList
                 notes={notes}
                 onRemoveNote={onRemoveNote} />
-                <Outlet/>
+            <Outlet />
         </section>
     )
 }

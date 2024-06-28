@@ -1,6 +1,6 @@
 // note service
 import { storageService } from "../../../services/async-storage.service.js"
-import { utilService } from "../../../services/util.service.js"
+// import { utilService } from "../../../services/util.service.js"
 
 const NOTE_KEY = 'noteDB'
 _createNotes()
@@ -16,11 +16,10 @@ export const noteService = {
 function query(filterBy = {}) {
     return storageService.query(NOTE_KEY)
         .then(notes => {
-            console.log('notes:', notes)
 
             if (filterBy.txt) {
                 const regExp = new RegExp(filterBy.txt, 'i')
-                notes = notes.filter(note => regExp.test(note.vendor))
+                notes = notes.filter(note => regExp.test(note.info.txt || '') || regExp.test(note.info.title || ''))
             }
 
             return notes
@@ -44,8 +43,18 @@ function save(note) {
     }
 }
 
-function getEmptyNote(text = '') {
-    return { text }
+function getEmptyNote() {
+    return {
+        id: '',
+        type: 'NoteTxt',
+        isPinned: false,
+        style: {
+            backgroundColor: '#ffffff'
+        },
+        info: {
+            txt: ''
+        }
+    };
 }
 
 function _createNotes() {
@@ -198,8 +207,9 @@ function getFilterFromSearchParams(searchParams) {
     }
 }
 
-function _createNote(txt) {
-    const note = getEmptyNote(txt)
-    note.id = utilService.makeId()
-    return note
+function _createNote() {
+    let notes = storageService.loadFromStorage(NOTE_KEY) || []
+    const newNote = getEmptyNote()
+    notes.push(newNote)
+    storageService.saveToStorage(NOTE_KEY, notes)
 }

@@ -3,3 +3,40 @@
     display: grid;
     grid-template-rows: 1f1 10fr;
  }
+
+
+
+ .App {
+   text-align: center;
+   font-family: Arial, sans-serif;
+}
+
+.palette-toggle-btn {
+   background: none;
+   border: none;
+   cursor: pointer;
+   font-size: 24px;
+   margin: 20px;
+}
+
+.palette {
+   display: flex;
+   justify-content: center;
+   margin: 20px;
+}
+
+.color-btn {
+   width: 40px;
+   height: 40px;
+   border: none;
+   margin: 5px;
+   cursor: pointer;
+   outline: none;
+}
+
+.content {
+   padding: 20px;
+   text-align: center;
+   border: 1px solid #ccc;
+   margin: 20px;
+}
