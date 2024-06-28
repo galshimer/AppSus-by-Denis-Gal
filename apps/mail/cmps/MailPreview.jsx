@@ -12,22 +12,29 @@ const { Link } = ReactRouterDOM
 //         to: 'user@appsus.com
 
 export function MailPreview({ mail, onRemoveMail }) {
+
     const { subject, body, from, createdAt } = mail;
+    function onDeleteMail(ev) {
+        console.log(ev)
+        ev.stopPropagation()
+        onRemoveMail(mail.id)
+    }
+    const date = new Date(createdAt)
+    const formattedDate = new Intl.DateTimeFormat('en-US', {month: 'short', day: '2-digit'}).format(date)
     return (
-        <article className="mail-preview" > 
+        <article className="mail-preview" >
             <p className="mail-from">{from}</p>
+            <div className="divider"></div>
             <div className="mail-info">
-                <span className="mail-subject">{subject}</span>
-                <span className="mail-body">{body}</span>
+                <span className="mail-subject">{subject}</span> 
+                <span className="mail-body">- {body}</span> 
             </div>
             <div className="mail-actions">
-                {/* <button className="remove-btn" onClick={() => onRemoveMail(mail.id)}>Remove</button> */}
-                <span className="material-symbols-outlined remove-btn" onClick={() => onRemoveMail(mail.id)}>
+                <span className="material-symbols-outlined remove-btn" onClick={onDeleteMail}>
                     delete
                 </span>
-                {/* <button className="details-btn"><Link to={`/mail/${mail.id}`}>Details</Link></button> */}
             </div>
-            <p className="mail-date">{createdAt}</p>
+            <p className="mail-date">{formattedDate}</p>
         </article>
     );
 }

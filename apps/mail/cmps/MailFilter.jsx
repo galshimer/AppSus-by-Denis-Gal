@@ -1,5 +1,5 @@
 const { useState, useEffect, useRef } = React
-import { utilService } from '../services/util.service.js'
+import { utilService } from '../../../services/util.service.js'
 
 export function MailFilter({ filterBy, onSetFilter }) {
     const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
@@ -27,7 +27,7 @@ export function MailFilter({ filterBy, onSetFilter }) {
         <section className="mail-filter">
             <div className="txt-input">
                 <form onSubmit={onSubmitFilter}>
-                    <label htmlFor="txt"><span class="material-symbols-outlined">
+                    <label htmlFor="txt"><span className="material-symbols-outlined">
                         search
                     </span>
                     </label>

@@ -17,7 +17,7 @@ export function NoteList({ notes, onRemoveNote }) {
                             <button><Link to={`/note/${note.id}`}>Edit</Link></button>
                             <i className=" btn fa-solid fa-palette"></i>
                             <i className="btn fa-regular fa-image"></i>
-                            <span class="material-symbols-outlined pin-icon">
+                            <span className="material-symbols-outlined pin-icon">
                                 keep
                             </span>
                         </section>
