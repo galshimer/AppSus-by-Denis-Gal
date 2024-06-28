@@ -38,9 +38,11 @@ export function MailIndex() {
     }
 
     return (
-        <section>
+        <section className="mail-index">
+            <div className="list-filter-container">
             <MailFilter filterBy={filterBy} onSetFilter={handleSetFilter} />
             <MailList mails={filteredEmails} onRemoveMail={(id) => setEmails(emails.filter(mail => mail.id !== id))} />
+            </div>
         </section>
     )
 }

@@ -1,0 +1,9 @@
+.mail-index {
+    display: grid;
+    grid-template-columns: 256px 1fr 10px;
+    grid-template-areas: ". container";
+}
+
+.list-filter-container {
+ grid-area: container;
+}

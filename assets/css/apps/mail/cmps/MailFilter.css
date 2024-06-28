@@ -1,0 +1,19 @@
+input[type="text"] {
+    display: flex;
+    align-items: center;
+    
+    width: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1em;
+
+    border-style: none;
+    border-radius: 2em;
+
+    margin: 10px;
+
+}
+
+input[type="text"]:hover {
+    border: none;
+}
+
