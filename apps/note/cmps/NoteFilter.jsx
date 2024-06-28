@@ -30,12 +30,6 @@ export function NoteFilter({ filterBy, onSetFilter }) {
         setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
     }
 
-
-    // function onSubmitFilter(ev) {
-    //     ev.preventDefault()
-    //     onSetFilter(filterByToEdit)
-    // }
-
     return (
         <section className="note-filter">
             <div className="search-container">
