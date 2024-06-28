@@ -1,4 +1,5 @@
-input[type="text"] {
+
+.txt-input {
     display: flex;
     align-items: center;
     
@@ -10,10 +11,8 @@ input[type="text"] {
     border-radius: 2em;
 
     margin: 10px;
-
 }
 
-input[type="text"]:hover {
+.txt-input:hover {
     border: none;
 }
-
