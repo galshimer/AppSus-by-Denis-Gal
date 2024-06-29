@@ -1,4 +1,8 @@
  /* home */
+ body{
+    color:#2A2B2C;
+    margin-top: 0;
+ }
  .home {
      text-align: center;
      padding: 20px;
