@@ -25,17 +25,9 @@ export function MailFolderList({ onSetFilter, filterBy, unreadCount }) {
     navigate('/mail')
   }
 
-  //   function handleFolderChange(folder) {
-  //     setFilterByToEdit({ ...filterByToEdit, folder })
-  //     onSetFilter({ folder })
-  // }
-
-
   const folder = filterByToEdit.folder
 
   return (
-
-
     <section>
       <div className="compose-container">
         <button className="btn-compose">

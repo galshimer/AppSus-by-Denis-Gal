@@ -1,16 +1,5 @@
 const { Link } = ReactRouterDOM
 
-
-// id: utilService.makeId(),
-//         createdAt: 1551133930500,
-//         subject: 'Miss you!',
-//         body: 'Would love to catch up sometimes',
-//         isRead: false,
-//         sentAt: 1551133930594,
-//         removedAt: null,
-//         from: 'momo@momo.com',
-//         to: 'user@appsus.com
-
 export function MailPreview({ mail, onRemoveMail, onToggleStarred }) {
     const { subject, body, from, createdAt, isRead, isStarred } = mail
 
@@ -21,7 +10,7 @@ export function MailPreview({ mail, onRemoveMail, onToggleStarred }) {
 
     function handleStarClick(ev) {
         ev.stopPropagation()
-        onToggleStarred(mail)  // Call the function directly
+        onToggleStarred(mail)  
     }
 
     const date = new Date(createdAt)

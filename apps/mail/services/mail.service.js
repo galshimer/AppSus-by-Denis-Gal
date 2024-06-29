@@ -1,5 +1,3 @@
-// mail service
-
 import { utilService } from '../../../services/util.service.js'
 import { storageService } from '../../../services/async-storage.service.js'
 
@@ -20,7 +18,6 @@ const email = {
     from: 'momo@momo.com',
     to: 'user@appsus.com'
 }
-
 
 const MAIL_KEY = 'mailDB'
 generateDemoMails(40)
@@ -64,9 +61,6 @@ function query(filterBy = {}) {
         })
 }
 
-
-
-
 function get(mailId) {
     return storageService.get(MAIL_KEY, mailId)
         .then(mail => _setNextPrevMailId(mail))
@@ -109,8 +103,6 @@ function _setNextPrevMailId(mail) {
     })
 }
 
-
-
 // +-+-+-+-+-+-+-+-+-+-+-+- demo data +-+-+-+-+-+-+-+-+-+-+-+-//
 function generateDemoMails(mailCount = 400) {
 
@@ -135,24 +127,6 @@ function generateDemoMails(mailCount = 400) {
     storageService.saveToStorage(MAIL_KEY, mails)
 }
 
-// function _generateUserRandomEmail(id, userEmails = false) {
-//     const twoYears = 60 * 60 * 24 * 365 * 2 * 1000
-//     const onWeek = 60 * 60 * 24 * 7 * 1000
-//     const today = Date.now()
-//     const sentAt = utilService.getRandomIntInclusive(today - twoYears, today)
-//     return {
-//         id,
-//         createdAt: utilService.getRandomIntInclusive(sentAt - onWeek, sentAt),
-//         subject: _generateRandomEmailSubject(),
-//         body: _generateRandomEmailBody(),
-//         isRead: userEmails ? true : Math.random() > 0.4 ? true : false,
-//         sentAt,
-//         removedAt: Math.random() > 0.7 ? null : utilService.getRandomIntInclusive(sentAt, today),
-//         from: userEmails ? USER_IDENTIFIERS.email : _generateRandomEmailAddress(),
-//         to: _generateRandomEmailAddress(),
-//     }
-// }
-
 function _generateUserRandomEmail(id, userEmails = false) {
     const twoYears = 60 * 60 * 24 * 365 * 2 * 1000;
     const oneWeek = 60 * 60 * 24 * 7 * 1000;
@@ -160,7 +134,6 @@ function _generateUserRandomEmail(id, userEmails = false) {
     const sentAt = utilService.getRandomIntInclusive(today - twoYears, today);
     const isRead = userEmails ? true : Math.random() > 0.4;
     const isStarred = false
-
 
     return {
         id,
@@ -174,10 +147,8 @@ function _generateUserRandomEmail(id, userEmails = false) {
         from: userEmails ? USER_IDENTIFIERS.email : _generateRandomEmailAddress(),
         to: _generateRandomEmailAddress(),
 
-    };
+    }
 }
-
-
 
 function _generateRandomEmailSubject() {
     const adjectives = ['Important', 'Urgent', 'New', 'Updated', 'Final', 'Weekly', 'Monthly'];
