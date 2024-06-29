@@ -1,6 +1,5 @@
-// note service
-import { storageService } from "../../../services/async-storage.service.js"
 
+import { storageService } from "../../../services/async-storage.service.js"
 
 const NOTE_KEY = 'noteDB'
 _createNotes()
@@ -122,11 +121,14 @@ function _createNotes() {
                         '#fff8b8'
                 },
                 info: {
-                    title: 'Get my stuff together',
+                    title: 'Grocery',
                     todos: [
-                        { txt: 'Diving license', doneAt: null },
-                        { txt: 'Diving watch', doneAt: 187111111 },
-                        { txt: 'Camera', doneAt: null }
+                        { txt: 'Bread', doneAt: null },
+                        { txt: 'Bagels', doneAt: null },
+                        { txt: 'Cereals', doneAt: null },
+                        { txt: 'Milk', doneAt: null },
+                        { txt: 'Eggs', doneAt: null },
+                        { txt: 'Cheese', doneAt: null }
 
                     ]
                 }
@@ -202,16 +204,15 @@ function _setNextPrevNoteId(note) {
 }
 
 function getFilterFromSearchParams(searchParams) {
-    // return Object.fromEntries(searchParams)
     const txt = searchParams.get('txt') || ''
     return {
         txt
     }
 }
 
-function _createNote() {
-    let notes = storageService.loadFromStorage(NOTE_KEY) || []
-    const newNote = getEmptyNote()
-    notes.push(newNote)
-    storageService.saveToStorage(NOTE_KEY, notes)
-}
+// function _createNote() {
+//     let notes = storageService.loadFromStorage(NOTE_KEY) || []
+//     const newNote = getEmptyNote()
+//     notes.push(newNote)
+//     storageService.saveToStorage(NOTE_KEY, notes)
+// }

@@ -19,7 +19,6 @@ export function NoteList({ notes, onRemoveNote, onChangeBgColor, onTogglePin, on
     function handleShareClick(note) {
         const subject = `Sharing Note: ${note.title}`
         const body = encodeURIComponent(note.content)
-
         const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=&subject=${subject}&body=${body}`
 
         window.open(gmailUrl, '_blank')
@@ -28,9 +27,7 @@ export function NoteList({ notes, onRemoveNote, onChangeBgColor, onTogglePin, on
 
     const handleImageUpload = (event, noteId) => {
         const file = event.target.files[0]
-        if (file) {
-            onUploadImage(noteId, file)
-        }
+        if (file) onUploadImage(noteId, file)
     }
 
     return (
@@ -48,14 +45,13 @@ export function NoteList({ notes, onRemoveNote, onChangeBgColor, onTogglePin, on
                                 className="btn fa-solid fa-palette"></i>
                             <i onClick={() => document.getElementById(`file-input-${note.id}`).click()}
                                 className="btn fa-regular fa-image"></i>
-                            <input type="file" id={`file-input-${note.id}`} style={{ display: 'none' }} onChange={(e) => handleImageUpload(e, note.id)} />
+                            <input type="file" id={`file-input-${note.id}`} style={{ display: 'none' }}
+                                onChange={(e) => handleImageUpload(e, note.id)} />
                             <i onClick={() => handleShareClick(note.id)}
                                 className="btn fa-regular fa-share-from-square"
                             ></i>
-                            <span
-                                className="material-symbols-outlined pin-icon"
-                                onClick={() => onTogglePin(note.id)}
-                            >
+                            <span className="material-symbols-outlined pin-icon"
+                                onClick={() => onTogglePin(note.id)}>
                                 {note.isPinned ? 'unpin' : 'keep'}
                             </span>
                             <i onClick={() => onDuplicateNote(note)}

@@ -44,11 +44,9 @@ export function NoteFilter({ filterBy, onSetFilter }) {
                 <div className="note-filter-type">
                     {filters.map((filterItem) => {
                         return (
-                            <p
-                                className={filterByToEdit.type === filterItem.filter ? 'active' : ''}
+                            <p className={filterByToEdit.type === filterItem.filter ? 'active' : ''}
                                 key={filterItem.display}
-                                onClick={() => onFilterClick(filterItem.filter)}
-                            >
+                                onClick={() => onFilterClick(filterItem.filter)}>
                                 {filterItem.display}
                             </p>
                         )
