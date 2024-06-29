@@ -33,6 +33,7 @@ export function MailFilter({ filterBy, onSetFilter, folder }) {
                     </span>
                     </label>
                     <input
+                        className="input"
                         value={txt}
                         onChange={handleChange}
                         name="txt"

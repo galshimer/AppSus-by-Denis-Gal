@@ -41,6 +41,7 @@
 
 .mail-preview:hover {
     background: #f9f9f9;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .mail-info {
@@ -75,6 +76,17 @@
     font-weight: 400;
 }
 
-.starred {
-    background-color: yellow;
+.mail-preview .material-symbols-outlined.btn {
+    cursor: pointer;
+    color: gray;
+    transition: color 0.3s;
 }
+
+.mail-preview .material-symbols-outlined.btn.starred {
+    color: gold;
+}
+
+.mail-preview .material-symbols-outlined.btn.unstarred {
+    color: gray;
+}
+

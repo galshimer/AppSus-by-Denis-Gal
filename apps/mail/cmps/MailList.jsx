@@ -3,41 +3,51 @@ const { useState, useEffect, Fragment } = React
 // const { useNavigate } = ReactRouterDOM
 const { Link } = ReactRouterDOM
 
-export function MailList({ mails, onRemoveMail, onToggleStarred }) {
-    // const navigate = useNavigate()
-    // function onMoveToMail(mailId) {
-    //     navigate(`/mail/${mailId}`)
-    // }
+// export function MailList({ mails, onRemoveMail, onToggleStarred }) {
+//     // const navigate = useNavigate()
+//     // function onMoveToMail(mailId) {
+//     //     navigate(`/mail/${mailId}`)
+//     // }
 
-    // onClick={() => onMoveToMail(mail.id)}
+//     // onClick={() => onMoveToMail(mail.id)}
 
-    function isStarredClass(mail) {
-        if (mail.isStarred) return 'starred'
-        return 'unstarred'
-    }
     
+    
+//     return (
+//         <ul className="mail-list">
+//             {mails.map(mail => (
+//                 <li key={mail.id} >
+
+                    
+
+//                     <Link to={`/mail/${mail.id}`}>
+//                         <MailPreview
+//                             mail={mail}
+//                             onRemoveMail={onRemoveMail}
+//                         />
+//                     </Link>
+//                 </li>
+
+//             ))
+//             }
+//         </ul >
+
+//     )
+// }
+
+// import { MailPreview } from './MailPreview.jsx'
+
+export function MailList({ mails, onRemoveMail, onToggleStarred }) {
     return (
-        <ul className="mail-list">
+        <section className="mail-list">
             {mails.map(mail => (
-                <li key={mail.id} >
-
-                    <span 
-                    className={`material-symbols-outlined btn ${isStarredClass(mail)}`}
-                    onClick={() => onToggleStarred(mail)}>
-                        star
-                    </span>
-
-                    <Link to={`/mail/${mail.id}`}>
-                        <MailPreview
-                            mail={mail}
-                            onRemoveMail={onRemoveMail}
-                        />
-                    </Link>
-                </li>
-
-            ))
-            }
-        </ul >
-
-    );
+                <MailPreview
+                    key={mail.id}
+                    mail={mail}
+                    onRemoveMail={onRemoveMail}
+                    onToggleStarred={onToggleStarred}  // Ensure this is passed correctly
+                />
+            ))}
+        </section>
+    )
 }

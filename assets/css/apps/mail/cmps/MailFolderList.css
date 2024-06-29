@@ -1,0 +1,25 @@
+.btn-folder {
+    border: none;
+    background-color: #fff;
+    display: flex;
+    height: 32px;
+    padding: 0 12px 0 26px;
+    align-items: center;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    font-weight: 500;
+}
+
+.active {
+    font-weight: bold;
+    background-color: #d3e3fd;
+}
+
+.btn-folder:hover {
+    background-color: #ECE9E9;
+    cursor: pointer;
+}
+
+.folder-container {
+    margin-top: 8px;
+}

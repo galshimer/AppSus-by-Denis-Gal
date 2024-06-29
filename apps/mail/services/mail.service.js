@@ -12,7 +12,7 @@ const email = {
     id: 'e101',
     createdAt: 1551133930500,
     subject: 'Miss you!',
-    body: 'Would love to catch up sometimes',
+    body: 'Would love to catch up sometime',
     isRead: false,
     isStarred: false,
     sentAt: 1551133930594,
@@ -20,6 +20,7 @@ const email = {
     from: 'momo@momo.com',
     to: 'user@appsus.com'
 }
+
 
 const MAIL_KEY = 'mailDB'
 generateDemoMails(40)
@@ -37,18 +38,34 @@ export const mailService = {
 function query(filterBy = {}) {
     return storageService.query(MAIL_KEY)
         .then(mails => {
-            console.log('mails:', mails);
-
             if (filterBy.txt) {
                 const regExp = new RegExp(filterBy.txt, 'i');
                 mails = mails.filter(mail =>
                     regExp.test(mail.subject) || regExp.test(mail.body)
-                );
+                )
             }
-
+            if (filterBy.folder === 'inbox') {
+                console.log(mails)
+                mails = mails.filter(mail => 
+                    mail.from !== USER_IDENTIFIERS.email
+                )
+            }
+            if (filterBy.folder === 'sent') {
+                mails = mails.filter(mail => 
+                    mail.from === USER_IDENTIFIERS.email
+                )
+            }
+            if (filterBy.folder === 'starred') {
+                mails = mails.filter(mail => 
+                    mail.isStarred
+                )
+            }
             return mails
         })
 }
+
+
+
 
 function get(mailId) {
     return storageService.get(MAIL_KEY, mailId)
@@ -92,6 +109,8 @@ function _setNextPrevMailId(mail) {
     })
 }
 
+
+
 // +-+-+-+-+-+-+-+-+-+-+-+- demo data +-+-+-+-+-+-+-+-+-+-+-+-//
 function generateDemoMails(mailCount = 400) {
 
@@ -116,23 +135,49 @@ function generateDemoMails(mailCount = 400) {
     storageService.saveToStorage(MAIL_KEY, mails)
 }
 
+// function _generateUserRandomEmail(id, userEmails = false) {
+//     const twoYears = 60 * 60 * 24 * 365 * 2 * 1000
+//     const onWeek = 60 * 60 * 24 * 7 * 1000
+//     const today = Date.now()
+//     const sentAt = utilService.getRandomIntInclusive(today - twoYears, today)
+//     return {
+//         id,
+//         createdAt: utilService.getRandomIntInclusive(sentAt - onWeek, sentAt),
+//         subject: _generateRandomEmailSubject(),
+//         body: _generateRandomEmailBody(),
+//         isRead: userEmails ? true : Math.random() > 0.4 ? true : false,
+//         sentAt,
+//         removedAt: Math.random() > 0.7 ? null : utilService.getRandomIntInclusive(sentAt, today),
+//         from: userEmails ? USER_IDENTIFIERS.email : _generateRandomEmailAddress(),
+//         to: _generateRandomEmailAddress(),
+//     }
+// }
+
 function _generateUserRandomEmail(id, userEmails = false) {
-    const twoYears = 60 * 60 * 24 * 365 * 2 * 1000
-    const onWeek = 60 * 60 * 24 * 7 * 1000
-    const today = Date.now()
-    const sentAt = utilService.getRandomIntInclusive(today - twoYears, today)
+    const twoYears = 60 * 60 * 24 * 365 * 2 * 1000;
+    const oneWeek = 60 * 60 * 24 * 7 * 1000;
+    const today = Date.now();
+    const sentAt = utilService.getRandomIntInclusive(today - twoYears, today);
+    const isRead = userEmails ? true : Math.random() > 0.4;
+    const isStarred = false
+
+
     return {
         id,
-        createdAt: utilService.getRandomIntInclusive(sentAt - onWeek, sentAt),
+        createdAt: utilService.getRandomIntInclusive(sentAt - oneWeek, sentAt),
         subject: _generateRandomEmailSubject(),
         body: _generateRandomEmailBody(),
-        isRead: userEmails ? true : Math.random() > 0.4 ? true : false,
+        isRead,
+        isStarred,
         sentAt,
         removedAt: Math.random() > 0.7 ? null : utilService.getRandomIntInclusive(sentAt, today),
         from: userEmails ? USER_IDENTIFIERS.email : _generateRandomEmailAddress(),
         to: _generateRandomEmailAddress(),
-    }
+
+    };
 }
+
+
 
 function _generateRandomEmailSubject() {
     const adjectives = ['Important', 'Urgent', 'New', 'Updated', 'Final', 'Weekly', 'Monthly'];

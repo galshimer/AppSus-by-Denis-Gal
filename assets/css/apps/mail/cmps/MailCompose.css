@@ -1,0 +1,31 @@
+.compose-container {
+
+    align-items: center;
+
+
+    display: flex;
+    font-size: medium;
+    height: 56px;
+    margin: 16px 0 16px;
+    padding: 0 0 0 8px;
+}
+
+.btn-compose {
+    background-color: #E3F5FF;
+    border-radius: 16px;
+    color: #001d35;
+    height: 56px;
+    padding: 0 24px 0 0;
+    min-width: 96px;
+    width: 150px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-compose:hover {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.compose-container span {
+margin-bottom: 15px;
+}
