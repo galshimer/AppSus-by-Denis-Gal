@@ -20,3 +20,45 @@
     border: 1px solid #ccc;
     margin: 20px;
  }
+
+ .note-filter {
+   display: flex;
+   align-items: center;
+   background-color: #fff;
+   border: 1px solid #ccc;
+   border-radius: 12px;
+   padding: 8px 12px;
+   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+   transition: box-shadow 0.2s ease-in-out;
+   width: 100%;
+   max-width: 600px;
+   margin: 0 auto;
+   background-color: #F8F8F8;
+   margin-top: 7px;
+   
+}
+
+/* .note-filter:hover {
+   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+} */
+
+.note-search-input {
+   flex: 1;
+   border: none;
+   outline: none;
+   padding: 8px;
+   font-size: 16px;
+   color: #333;
+   background-color: #F8F8F8;
+
+}
+
+.note-search-input::placeholder {
+   color: #999;
+}
+
+.search-icon {
+   font-size: 24px;
+   color: #5f6368;
+   margin-right: 8px;
+}

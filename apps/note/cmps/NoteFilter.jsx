@@ -31,12 +31,21 @@ export function NoteFilter({ filterBy, onSetFilter }) {
     }
 
     return (
-        <section className="note-filter">
-            <div className="note-search-container">
-                <form onSubmit={(ev) => ev.preventDefault()}>
-                    <input className="search btn" value={filterByToEdit.txt || ''} onChange={handleChange} placeholder="Search" name="txt" type="text" id="txt" />
-                </form>
-            </div>
-        </section>
+        // <section className="note-filter">
+        //     <div className="note-search-container">
+        //         <form onSubmit={(ev) => ev.preventDefault()}>
+        //             <input className="search btn note-search-input" value={filterByToEdit.txt || ''} onChange={handleChange} placeholder="Search" name="txt" type="text" id="txt" />
+        //         </form>
+        //     </div>
+        // </section>
+        <div className="note-filter">
+            <span className="search-icon material-symbols-outlined">search</span>
+            <input
+                type="text"
+                placeholder="Search"
+                className="note-search-input"
+                onChange={(e) => onSetFilter({ txt: e.target.value })}
+            />
+        </div>
     )
 }
