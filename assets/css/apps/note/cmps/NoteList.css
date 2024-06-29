@@ -1,16 +1,10 @@
  /* note list */
- /* .main {
-     display: grid;
-     grid-template-columns: 1fr 3fr;
-
- } */
 
  .note-list {
      list-style: none;
      column-count: 4;
      padding: 50px;
-     min-height: 100vh;
-
+     height: auto;
  }
 
  .note-list>* {
@@ -46,3 +40,7 @@
  li {
      font-size: 14px;
  }
+ 
+ .note-list .single-note:nth-child(1) {
+    margin-top: 0;
+}

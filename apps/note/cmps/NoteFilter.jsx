@@ -1,10 +1,11 @@
-const { useState, useEffect, useRef } = React
+
+const { useState, useEffect } = React
 
 export function NoteFilter({ filterBy, onSetFilter }) {
-
     const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
 
     const filters = [
+        { display: 'All', filter: '' },
         { display: 'Text', filter: 'NoteTxt' },
         { display: 'Image', filter: 'NoteImg' },
         { display: 'Todo', filter: 'NoteTodos' }
@@ -17,7 +18,7 @@ export function NoteFilter({ filterBy, onSetFilter }) {
     function onFilterClick(filterType) {
         setFilterByToEdit((prevFilter) => ({
             ...prevFilter,
-            type: prevFilter.type === filterType ? '' : filterType,
+            type: filterType,
         }))
     }
 
@@ -27,8 +28,6 @@ export function NoteFilter({ filterBy, onSetFilter }) {
         setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
     }
 
-    const { text } = filterByToEdit
-
     return (
         <div className="note-filter">
             <span className="search-icon material-symbols-outlined">search</span>
@@ -36,12 +35,12 @@ export function NoteFilter({ filterBy, onSetFilter }) {
                 type="text"
                 placeholder="Search"
                 className="note-search-input"
-                onChange={(e) => handleChange(e)}
+                onChange={handleChange}
                 value={filterByToEdit.txt || ''}
                 name="txt"
             />
             <div className="filter-icon">
-                <span className="material-symbols-outlined">  filter_alt </span>
+                <span className="material-symbols-outlined">filter_alt</span>
                 <div className="note-filter-type">
                     {filters.map((filterItem) => {
                         return (
@@ -56,7 +55,7 @@ export function NoteFilter({ filterBy, onSetFilter }) {
                     })}
                 </div>
             </div>
-
         </div>
     )
 }
+

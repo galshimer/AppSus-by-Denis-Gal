@@ -1,5 +1,6 @@
-const { Link, useSearchParams, Outlet } = ReactRouterDOM
-const { useEffect, useState } = React
+
+const { useState, useEffect } = React
+const { useSearchParams, Outlet } = ReactRouterDOM
 
 import { NoteFilter } from "../cmps/NoteFilter.jsx";
 import { NoteList } from "../cmps/NoteList.jsx";
@@ -30,11 +31,11 @@ export function NoteIndex() {
         noteService.remove(noteId)
             .then(() => {
                 setNotes(notes => notes.filter(note => note.id !== noteId))
-                showSuccessMsg(`Note (${noteId}) removed successfully!`)
+                // showSuccessMsg(`note (${noteId}) removed successfully!`)
             })
             .catch(err => {
                 console.log('Problems removing note:', err)
-                showErrorMsg(`Having problems removing note!`)
+                // showErrorMsg(`Having problems removing note!`)
             })
     }
 
@@ -63,29 +64,21 @@ export function NoteIndex() {
             })
     }
 
-    function onTogglePin(noteId) {
-        const noteToUpdate = notes.find(note => note.id === noteId)
-        if (!noteToUpdate) return
-
-        const updatedNote = {
-            ...noteToUpdate,
-            isPinned: !noteToUpdate.isPinned,
-        }
-
-        noteService.save(updatedNote)
-            .then(savedNote => {
-                const updatedNotes = notes.map(note =>
-                    note.id === savedNote.id ? savedNote : note
-                )
-                setNotes(updatedNotes)
-            })
-            .catch(error => {
-                console.error('Error toggling pin on note:', error)
-            })
-    }
-
     function onSetFilter(filterBy) {
         setFilterBy(prevFilter => ({ ...prevFilter, ...filterBy }))
+    }
+
+    function onDuplicateNote(note) {
+        const newNote = { ...note, id: null }
+        noteService.save(newNote)
+            .then(savedNote => {
+                setNotes(prevNotes => [savedNote, ...prevNotes])
+                // showSuccessMsg(`Note duplicated successfully!`)
+            })
+            .catch(err => {
+                console.log('Error duplicating note:', err)
+                // showErrorMsg(`Failed to duplicate note.`)
+            })
     }
 
     if (!notes) return <div>Loading...</div>
@@ -97,7 +90,28 @@ export function NoteIndex() {
                 notes={notes}
                 onChangeBgColor={onChangeBgColor}
                 onRemoveNote={onRemoveNote}
-                onTogglePin={onTogglePin}
+                onTogglePin={noteId => {
+                    const noteToUpdate = notes.find(note => note.id === noteId)
+                    if (!noteToUpdate) return
+
+                    const updatedNote = {
+                        ...noteToUpdate,
+                        isPinned: !noteToUpdate.isPinned,
+                    }
+
+                    noteService.save(updatedNote)
+                        .then(savedNote => {
+                            const updatedNotes = notes.map(note =>
+                                note.id === savedNote.id ? savedNote : note
+                            )
+                            setNotes(updatedNotes)
+                        })
+                        .catch(error => {
+                            console.error('Error saving note:', error)
+                        })
+
+                }}
+                onDuplicateNote={onDuplicateNote}
             />
             <Outlet />
         </section>
