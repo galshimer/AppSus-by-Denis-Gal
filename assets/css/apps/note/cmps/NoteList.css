@@ -15,12 +15,12 @@
      break-inside: avoid;
  }
 
- .search {
+ .note-search {
      font-size: 16px;
      background-color: #f1f3f4;
  }
 
- .search-container {
+ .note-search-container {
      display: flex;
      justify-content: center;
      align-items: center;
@@ -33,7 +33,6 @@
      height: fit-content;
      margin: 10px 0;
      color: #202124;
-     font-family: Roboto;
  }
 
  .text {
@@ -44,3 +43,4 @@
  li {
      font-size: 14px;
  }
+

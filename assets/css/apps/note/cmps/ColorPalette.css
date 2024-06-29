@@ -1,0 +1,38 @@
+.palette-toggle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    margin: 20px;
+}
+
+.palette {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.color-palette {
+    display: flex;
+    position: absolute;
+    transform: 0.3s;
+    background: white;
+    padding: 5px;
+    border: 1px solid #D3D3D3;
+    border-radius:10px;
+    z-index: 1;
+}
+
+.color-option {
+    width: 25px;
+    height: 25px;
+    margin: 4px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+    box-shadow: inset 0 0 0 1px transparent;
+}
+
+.color-option:hover {
+    box-shadow: inset 0 0 0 0.8px black;
+}

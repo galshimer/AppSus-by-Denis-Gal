@@ -32,7 +32,7 @@ export function NoteFilter({ filterBy, onSetFilter }) {
 
     return (
         <section className="note-filter">
-            <div className="search-container">
+            <div className="note-search-container">
                 <form onSubmit={(ev) => ev.preventDefault()}>
                     <input className="search btn" value={filterByToEdit.txt || ''} onChange={handleChange} placeholder="Search" name="txt" type="text" id="txt" />
                 </form>
