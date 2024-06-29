@@ -27,11 +27,11 @@ export function NoteList({ notes, onRemoveNote, onChangeBgColor, onTogglePin, on
 
 
     const handleImageUpload = (event, noteId) => {
-        const file = event.target.files[0];
+        const file = event.target.files[0]
         if (file) {
-            onUploadImage(noteId, file);
+            onUploadImage(noteId, file)
         }
-    };
+    }
 
     return (
         <div className="main">

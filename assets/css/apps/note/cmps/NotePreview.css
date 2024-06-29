@@ -63,3 +63,20 @@ h4 {
     opacity: 80%;
 
 }
+
+.btn-note .btn {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    padding: 10px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.btn-note .btn:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.btn-note .fa-copy {
+    margin-left: 10px;
+}

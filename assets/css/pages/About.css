@@ -1,10 +1,23 @@
-.about{
+.about {
     text-align: center;
-    color: #2A2B2C; 
+    color: #2A2B2C;
 }
-h1{
+
+h1 {
     padding-top: 10px;
 }
-.gal{
+
+.about-photo {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.photo-person {
+    height: 350px;
     width: 300px;
+    border-radius: 12px;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
 }
