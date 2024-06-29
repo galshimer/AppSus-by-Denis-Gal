@@ -1,21 +1,15 @@
 const { useParams, Link } = ReactRouterDOM
-
+const { useEffect, useState } = React
 import { mailService } from "../services/mail.service.js"
 
-const { useEffect, useState } = React
-
 export function MailDetails({ onRemoveMail }) {
-
     const [mail, setMail] = useState(null)
-
     const { mailId } = useParams()
-
     const [isMailRemoved, setIsMailRemoved] = useState(false)
 
     useEffect(() => {
         loadMail()
     }, [mailId])
-
 
     function loadMail() {
         mailService.get(mailId)
@@ -25,14 +19,13 @@ export function MailDetails({ onRemoveMail }) {
     function onRemoveMail(mailId) {
         mailService.remove(mailId)
             .then(() => {
-                console.log(`Mail with ID ${mailId} removed successfully!`);
-                setIsMailRemoved(true); // Set a flag indicating removal
+                console.log(`Mail with ID ${mailId} removed successfully!`)
+                setIsMailRemoved(true)
             })
             .catch(err => {
-                console.error('Failed to remove mail:', err);
-            });
+                console.error('Failed to remove mail:', err)
+            })
     }
-
 
     if (!mail) return <div>Loading...</div>
     const formattedDate = new Date(mail.createdAt).toLocaleString()
@@ -70,13 +63,3 @@ export function MailDetails({ onRemoveMail }) {
         </section>
     )
 }
-
-// id: utilService.makeId(),
-//         createdAt: 1551133930500,
-//         subject: 'Miss you!',
-//         body: 'Would love to catch up sometimes',
-//         isRead: false,
-//         sentAt: 1551133930594,
-//         removedAt: null,
-//         from: 'momo@momo.com',
-//         to: 'user@appsus.com

@@ -1,5 +1,3 @@
-
-
 const { useState, useEffect } = React
 import { MailFolderList } from '../cmps/MailFolderList.jsx'
 import { MailCompose } from '../cmps/MailCompose.jsx'
@@ -26,7 +24,6 @@ export function MailIndex() {
             .catch(err => console.error('Error loading mails:', err))
     }
     
-
     function handleSetFilter(newFilter) {
         setFilterBy(prevFilter => ({ ...prevFilter, ...newFilter }))
     }
@@ -44,7 +41,6 @@ export function MailIndex() {
 
     return (
         <section className="mail-index">
-            
             <MailFolderList
                 onSetFilter={handleSetFilter}
                 filterBy={filterBy}

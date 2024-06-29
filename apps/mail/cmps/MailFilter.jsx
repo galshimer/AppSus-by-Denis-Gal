@@ -24,7 +24,6 @@ export function MailFilter({ filterBy, onSetFilter, folder }) {
     const { txt } = filterByToEdit
 
     return (
-
         <section className="mail-filter">
             <div className="txt-input">
                 <form onSubmit={onSubmitFilter}>
