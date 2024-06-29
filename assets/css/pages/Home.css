@@ -1,1 +1,22 @@
  /* home */
+ .home {
+     text-align: center;
+     padding: 20px;
+ }
+
+ .home h1 {
+     font-size: 2em;
+     margin-bottom: 10px;
+ }
+
+ .home p {
+     margin-bottom: 20px;
+     font-size: 1.2em;
+ }
+
+ .navigation-links {
+     display: flex;
+     justify-content: center;
+     gap: 20px;
+     justify-content: space-around;
+ }
