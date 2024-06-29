@@ -1,16 +1,11 @@
-/* .mail-preview {
-    display: grid;
-    grid-template-columns: 260px 1fr 170px;
-    align-items: center;
-    max-height: 40px;
-} */
+
 
 .mail-preview {
     display: flex;
-    /* grid-template-columns: 260px 1fr 170px; */
     align-items: center;
     justify-content: space-between;
     max-height: 40px;
+    font-weight: bold;
 }
 
 .mail-preview:hover .mail-actions {
@@ -25,35 +20,18 @@
     display: none;
 }
 
-
 .mail-preview .mail-subject {
     text-align: start;
     overflow: hidden;
     font-size: 14px;
     white-space: nowrap;
-
 }
-
-/* .mail-preview,
-.mail-body,
-.mail-subject {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-} */
-
 
 .mail-body {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
-/* .mail-preview .mail-info {
-    display: grid;
-    grid-auto-flow: column;
-    
-} */
 
 .mail-preview .mail-date {
     text-align: end;
@@ -63,6 +41,7 @@
 
 .mail-preview:hover {
     background: #f9f9f9;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .mail-info {
@@ -92,3 +71,22 @@
     width: 32px;
     height: 40px;
 }
+
+.read {
+    font-weight: 400;
+}
+
+.mail-preview .material-symbols-outlined.btn {
+    cursor: pointer;
+    color: gray;
+    transition: color 0.3s;
+}
+
+.mail-preview .material-symbols-outlined.btn.starred {
+    color: gold;
+}
+
+.mail-preview .material-symbols-outlined.btn.unstarred {
+    color: gray;
+}
+

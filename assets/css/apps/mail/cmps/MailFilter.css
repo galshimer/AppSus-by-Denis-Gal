@@ -1,9 +1,8 @@
-
-.txt-input {
+/* .txt-input {
     display: flex;
     align-items: center;
     
-    width: 50%;
+    width: 95%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 1em;
 
@@ -11,8 +10,48 @@
     border-radius: 2em;
 
     margin: 10px;
+
+    color: #999;
+} */
+.txt-input {
+    display: flex;
+    align-items: center;
+
+    /* background-color: #fff; */
+
+
+    border-radius: 20px;
+
+    padding: 8px 12px;
+
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.2s ease-in-out;
+
+    width: 95%;
+    /* max-width: 500px; */
+
+    margin: 0 auto;
+    margin-top: 7px;
+
+    background-color: #eaf1fb;
+    border: none;
 }
 
-.txt-input:hover {
+.input {
+    flex: 1;
     border: none;
+    outline: none;
+    padding: 8px;
+    font-size: 16px;
+    color: #333;
+    background-color: #eaf1fb;
+    
+}
+
+.material-symbols-outlined {
+    font-size: 24px;
+    color: #5f6368;
+    /* color:red; */
+
+    margin-right: 8px;
 }
