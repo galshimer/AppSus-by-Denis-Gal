@@ -18,13 +18,13 @@ export function NoteFilter({ filterBy, onSetFilter }) {
         setFilterByToEdit((prevFilter) => ({
             ...prevFilter,
             type: prevFilter.type === filterType ? '' : filterType,
-        }));
+        }))
     }
 
     function handleChange(ev) {
-        const field = ev.target.name;
-        const value = ev.target.type === 'number' ? +ev.target.value : ev.target.value;
-        setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }));
+        const field = ev.target.name
+        const value = ev.target.type === 'number' ? +ev.target.value : ev.target.value
+        setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
     }
 
     const { text } = filterByToEdit

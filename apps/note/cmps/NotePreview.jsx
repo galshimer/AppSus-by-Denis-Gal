@@ -1,6 +1,5 @@
 
 export function NotePreview({ note }) {
-
     const { type, info } = note
 
     let content
@@ -10,7 +9,6 @@ export function NotePreview({ note }) {
                 {info.txt}
             </div>
         )
-
     } else if (type === 'NoteImg') {
         content = (
             <div className="photo note-preview" style={note.style}>
@@ -33,7 +31,7 @@ export function NotePreview({ note }) {
         )
     }
     return (
-        <article className="note-preview" >
+        <article className="note-preview">
             {content}
         </article>
     )
