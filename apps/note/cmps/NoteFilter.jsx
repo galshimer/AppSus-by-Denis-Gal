@@ -1,51 +1,62 @@
-import { utilService } from "../../../services/util.service.js"
-
 const { useState, useEffect, useRef } = React
 
 export function NoteFilter({ filterBy, onSetFilter }) {
 
-    const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
-    const onSetFilterDebounce = useRef(utilService.debounce(onSetFilter, 500))
+    const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
+
+    const filters = [
+        { display: 'Text', filter: 'NoteTxt' },
+        { display: 'Image', filter: 'NoteImg' },
+        { display: 'Todo', filter: 'NoteTodos' }
+    ]
 
     useEffect(() => {
-        onSetFilterDebounce.current(filterByToEdit)
+        onSetFilter(filterByToEdit)
     }, [filterByToEdit])
 
-    function handleChange({ target }) {
-        const field = target.name
-        let value = target.value
-
-        switch (target.type) {
-            case 'number':
-            case 'range':
-                value = +value
-                break
-            case 'checkbox':
-                value = target.checked
-                break
-            default:
-                break
-        }
-
-        setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
+    function onFilterClick(filterType) {
+        setFilterByToEdit((prevFilter) => ({
+            ...prevFilter,
+            type: prevFilter.type === filterType ? '' : filterType,
+        }));
     }
 
+    function handleChange(ev) {
+        const field = ev.target.name;
+        const value = ev.target.type === 'number' ? +ev.target.value : ev.target.value;
+        setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }));
+    }
+
+    const { text } = filterByToEdit
+
     return (
-        // <section className="note-filter">
-        //     <div className="note-search-container">
-        //         <form onSubmit={(ev) => ev.preventDefault()}>
-        //             <input className="search btn note-search-input" value={filterByToEdit.txt || ''} onChange={handleChange} placeholder="Search" name="txt" type="text" id="txt" />
-        //         </form>
-        //     </div>
-        // </section>
         <div className="note-filter">
             <span className="search-icon material-symbols-outlined">search</span>
             <input
                 type="text"
                 placeholder="Search"
                 className="note-search-input"
-                onChange={(e) => onSetFilter({ txt: e.target.value })}
+                onChange={(e) => handleChange(e)}
+                value={filterByToEdit.txt || ''}
+                name="txt"
             />
+            <div className="filter-icon">
+                <span className="material-symbols-outlined">  filter_alt </span>
+                <div className="note-filter-type">
+                    {filters.map((filterItem) => {
+                        return (
+                            <p
+                                className={filterByToEdit.type === filterItem.filter ? 'active' : ''}
+                                key={filterItem.display}
+                                onClick={() => onFilterClick(filterItem.filter)}
+                            >
+                                {filterItem.display}
+                            </p>
+                        )
+                    })}
+                </div>
+            </div>
+
         </div>
     )
 }

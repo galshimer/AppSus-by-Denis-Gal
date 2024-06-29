@@ -7,9 +7,10 @@
 
  .note-list {
      list-style: none;
-     column-count: 3;
+     column-count: 4;
      padding: 50px;
-     height: auto;
+     min-height: 100vh;
+
  }
 
  .note-list>* {
@@ -34,6 +35,7 @@
      height: fit-content;
      margin: 10px 0;
      color: #202124;
+     width: 240px;
  }
 
  .text {
@@ -44,4 +46,3 @@
  li {
      font-size: 14px;
  }
- 

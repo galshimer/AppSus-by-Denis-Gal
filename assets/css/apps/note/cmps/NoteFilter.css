@@ -1,0 +1,50 @@
+
+.search-icon-note span {
+    line-height: 48px;
+}
+
+.filter-icon {
+    position: relative;
+    width: 24px;
+    height: 48px;
+    margin-left: 8px; 
+    text-align: center;
+    cursor: pointer;
+}
+
+.filter-icon span {
+    line-height: 2em;
+    color: #5f6368;
+    display: flex;
+    justify-items: end;
+}
+
+.note-filter-type {
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: -20px;
+    flex-direction: column;
+    background-color: #ffffff;
+    border: 1px solid #c1c3c6;
+    border-radius: 4px;
+    box-shadow: 0px 1px 2px #c1c3c6;
+    z-index: 10;
+}
+
+.filter-icon:hover .note-filter-type {
+    display: flex;
+}
+
+.note-filter-type p {
+    margin: 0;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: 0.2s;
+    border-bottom: 1px solid #D3D3D3;
+}
+
+.note-filter-type p:hover {
+    filter: brightness(95%);
+    background-color: #ffffff;
+}

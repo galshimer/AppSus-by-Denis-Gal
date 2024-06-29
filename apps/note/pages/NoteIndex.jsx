@@ -1,12 +1,10 @@
-const { Link, useSearchParams } = ReactRouterDOM
+const { Link, useSearchParams, Outlet } = ReactRouterDOM
+const { useEffect, useState } = React
 
 import { NoteFilter } from "../cmps/NoteFilter.jsx"
 import { NoteList } from "../cmps/NoteList.jsx"
 import { noteService } from "../services/note.service.js"
 import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
-
-const { useEffect, useState } = React
-const { Outlet } = ReactRouterDOM
 
 export function NoteIndex() {
     const [searchParams, setSearchParams] = useSearchParams()
