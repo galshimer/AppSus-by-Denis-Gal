@@ -1,45 +1,4 @@
 
-
-// const { useState } = React
-
-
-// export function ColorPalette({ onChangeBgColor }) {
-//   const colors = [
-//     '#FFFFFF', // White
-//     '#F28B82', // Red
-//     '#FBBC04', // Orange
-//     '#FFF475', // Yellow
-//     '#CCFF90', // Green
-//     '#A7FFEB', // Teal
-//     '#CBF0F8', // Blue
-//     '#AECBFA', // Dark Blue
-//     '#D7AEFB', // Purple
-//     '#FDCFE8', // Pink
-//     '#E6C9A8', // Brown
-//     '#E8EAED'  // Gray
-//   ]
-//   const [pickedColor, setPickedColor] = useState(null)
-
-//   function onColorPickerClick(ev, color) {
-//     ev.stopPropagation()
-//     if (!color) return
-//     setPickedColor(color)
-//     onChangeBgColor(color)
-
-//   }
-//   return (
-//     <div className="color-palette">
-//       {colors.map(color => (
-//         <div
-//           key={color}
-//           className={`color-option ${pickedColor === color ? 'selected' : ''}`}
-//           style={{ backgroundColor: color }}
-//           onClick={() => onColorPickerClick(color)}
-//         ></div>
-//       ))}
-//     </div>
-//   );
-// }
 const { useState } = React
 
 export function ColorPalette({ onChangeBgColor }) {
