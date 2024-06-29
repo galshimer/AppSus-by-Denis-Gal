@@ -5,7 +5,6 @@ const { useSearchParams, Outlet } = ReactRouterDOM
 import { NoteFilter } from "../cmps/NoteFilter.jsx";
 import { NoteList } from "../cmps/NoteList.jsx";
 import { noteService } from "../services/note.service.js";
-import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js";
 
 export function NoteIndex() {
     const [searchParams, setSearchParams] = useSearchParams()
@@ -31,11 +30,9 @@ export function NoteIndex() {
         noteService.remove(noteId)
             .then(() => {
                 setNotes(notes => notes.filter(note => note.id !== noteId))
-                // showSuccessMsg(`note (${noteId}) removed successfully!`)
             })
             .catch(err => {
                 console.log('Problems removing note:', err)
-                // showErrorMsg(`Having problems removing note!`)
             })
     }
 
@@ -73,12 +70,42 @@ export function NoteIndex() {
         noteService.save(newNote)
             .then(savedNote => {
                 setNotes(prevNotes => [savedNote, ...prevNotes])
-                // showSuccessMsg(`Note duplicated successfully!`)
             })
             .catch(err => {
                 console.log('Error duplicating note:', err)
-                // showErrorMsg(`Failed to duplicate note.`)
             })
+    }
+
+        function onUploadImage(noteId, file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const imageUrl = e.target.result;
+            const noteToUpdate = notes.find(note => note.id === noteId);
+            if (!noteToUpdate) return;
+
+            const updatedNote = {
+                ...noteToUpdate,
+                type: 'NoteImg',
+                info: {
+                    ...noteToUpdate.info,
+                    url: imageUrl,
+                },
+            };
+
+            noteService.save(updatedNote)
+                .then(savedNote => {
+                    const updatedNotes = notes.map(note =>
+                        note.id === savedNote.id ? savedNote : note
+                    );
+                    setNotes(updatedNotes);
+                    showSuccessMsg(`Image uploaded successfully!`);
+                })
+                .catch(err => {
+                    console.log('Error uploading image:', err);
+                    showErrorMsg(`Failed to upload image.`);
+                });
+        };
+        reader.readAsDataURL(file);
     }
 
     if (!notes) return <div>Loading...</div>
@@ -112,6 +139,7 @@ export function NoteIndex() {
 
                 }}
                 onDuplicateNote={onDuplicateNote}
+                onUploadImage={onUploadImage}
             />
             <Outlet />
         </section>
