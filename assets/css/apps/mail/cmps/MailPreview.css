@@ -22,14 +22,14 @@
 
 .mail-preview .mail-subject {
     text-align: start;
-    overflow: hidden;
+    /* overflow: hidden; */
     font-size: 14px;
     white-space: nowrap;
 }
 
 .mail-body {
     white-space: nowrap;
-    overflow: hidden;
+    /* overflow: hidden; */
     text-overflow: ellipsis;
 }
 
