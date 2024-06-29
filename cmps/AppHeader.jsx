@@ -12,13 +12,13 @@ export function AppHeader() {
 
     return <header className="app-header">
         <Link to="/">
-            <h3><img className="logo" src='./assets/img/Logo.png'/></h3>
+            <h3><img className="logo" src='./assets/img/Logo.png' /></h3>
         </Link>
         <nav>
-            <NavLink className="nav" to="/">Home</NavLink>
-            <NavLink className="nav" to="/about">About</NavLink>
-            <NavLink to="/mail"><img className='logo-gmail nav' src="./assets/img/logo-gmail.png"/></NavLink>
-            <NavLink to="/note"><img className='logo-keep nav' src="./assets/img/logo-keep.png"/></NavLink>
+            <NavLink className="nav" to="/"><i class="fa fa-solid fa-house"></i></NavLink>
+            <NavLink className="nav" to="/about"><i class="fa fa-solid fa-question"></i></NavLink>
+            <NavLink to="/mail"><i class="fa fa-regular fa-envelope"></i></NavLink>
+            <NavLink to="/note"><i class="fa fa-regular fa-note-sticky"></i></NavLink>
         </nav>
-    </header>
+    </header >
 }

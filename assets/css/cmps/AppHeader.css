@@ -1,6 +1,5 @@
 header {
     background: #E3F5FF;
-    
     border-bottom: 2px solid white;
     font-size: 18px;
     height: 100px;
@@ -14,30 +13,15 @@ header {
 
 nav a {
     margin: .5em;
-
 }
 
-nav a:active {
-    color: purple;
-}
-
-nav a.active {
-    color: #2A2B2C;
-    font-weight: bold;
-    text-decoration: overline;
+.fa{
+    font-size: 25px;
 }
 
 .logo {
     width: 9.375em;
     padding-left: 5px;
-}
-
-.logo-gmail {
-    width: 2em;
-}
-
-.logo-keep {
-    width: 1.2em;
 }
 
 .nav:hover {

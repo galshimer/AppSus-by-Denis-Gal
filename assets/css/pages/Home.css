@@ -1,8 +1,10 @@
  /* home */
- body{
-    color:#2A2B2C;
-    margin-top: 0;
+ body {
+     color: #2A2B2C;
+     margin-top: 0;
+     background-color: #F5F5F5;
  }
+
  .home {
      text-align: center;
      padding: 20px;
@@ -23,4 +25,12 @@
      justify-content: center;
      gap: 20px;
      justify-content: space-around;
+ }
+
+ .logo-gmail {
+     width: 4em;
+ }
+
+ .logo-keep {
+     width: 2.4em;
  }

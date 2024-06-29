@@ -2,7 +2,7 @@
  .note-index {
     display: grid;
     grid-template-rows: 1f1 10fr;
-
+    background-color: white;
  }
 
  .color-btn {
