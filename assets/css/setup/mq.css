@@ -1,5 +1,17 @@
 @media (max-width: 650px) {
-    .logo{
+    .logo {
         width: 6em;
+    }
+
+    .photo-person{
+        height: 250px;
+        width: 220px;
+    }
+}
+
+@media (max-width: 550px){
+    .photo-person {
+        height: 200px;
+        width: 170px;
     }
 }

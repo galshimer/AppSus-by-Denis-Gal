@@ -3,18 +3,18 @@ const { useState } = React
 
 export function ColorPalette({ onChangeBgColor }) {
   const colors = [
-    '#FFFFFF', // White
-    '#faafa8', // Coral
-    '#f39f76', // Peach
-    '#fff8b8', // Sand
-    '#e2f6d3', // Mint
-    '#b2dfdb', // Sage
-    '#d4e4ed', // Fog
-    '#aeccdc', // Storm
-    '#d3bfdb', // Dusk
-    '#f6e2dd', //Blossom
-    '#e9e3d4', // Clay
-    '#e5e5e5'  //Chaik
+    { color: '#FFFFFF', colorName: 'White' },
+    { color: '#faafa8', colorName: 'Coral' },
+    { color: '#f39f76', colorName: 'Peach' },
+    { color: '#fff8b8', colorName: 'Sand' },
+    { color: '#e2f6d3', colorName: 'Mint' },
+    { color: '#b2dfdb', colorName: 'Sage' },
+    { color: '#d4e4ed', colorName: 'Fog' },
+    { color: '#aeccdc', colorName: 'Storm' },
+    { color: '#d3bfdb', colorName: 'Dusk' },
+    { color: '#f6e2dd', colorName: 'Blossom' },
+    { color: '#e9e3d4', colorName: 'Clay' },
+    { color: '#e5e5e5', colorName: 'Chaik' }
   ]
   const [pickedColor, setPickedColor] = useState(null)
 
@@ -27,12 +27,13 @@ export function ColorPalette({ onChangeBgColor }) {
 
   return (
     <div className="color-palette">
-      {colors.map(color => (
+      {colors.map(({color,colorName}) => (
         <div
           key={color}
+          title={colorName}
           className={`color-option ${pickedColor === color ? 'selected' : ''}`}
           style={{ backgroundColor: color }}
-          onClick={(ev) => onColorPickerClick(ev, color)} // Fixed
+          onClick={(ev) => onColorPickerClick(ev, color)}
         ></div>
       ))}
     </div>

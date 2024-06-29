@@ -77,11 +77,11 @@ export function NoteIndex() {
     }
 
         function onUploadImage(noteId, file) {
-        const reader = new FileReader();
+        const reader = new FileReader()
         reader.onload = (e) => {
-            const imageUrl = e.target.result;
-            const noteToUpdate = notes.find(note => note.id === noteId);
-            if (!noteToUpdate) return;
+            const imageUrl = e.target.result
+            const noteToUpdate = notes.find(note => note.id === noteId)
+            if (!noteToUpdate) return
 
             const updatedNote = {
                 ...noteToUpdate,
@@ -90,22 +90,20 @@ export function NoteIndex() {
                     ...noteToUpdate.info,
                     url: imageUrl,
                 },
-            };
+            }
 
             noteService.save(updatedNote)
                 .then(savedNote => {
                     const updatedNotes = notes.map(note =>
                         note.id === savedNote.id ? savedNote : note
-                    );
-                    setNotes(updatedNotes);
-                    showSuccessMsg(`Image uploaded successfully!`);
+                    )
+                    setNotes(updatedNotes)
                 })
                 .catch(err => {
-                    console.log('Error uploading image:', err);
-                    showErrorMsg(`Failed to upload image.`);
-                });
-        };
-        reader.readAsDataURL(file);
+                    console.log('Error uploading image:', err)
+                })
+        }
+        reader.readAsDataURL(file)
     }
 
     if (!notes) return <div>Loading...</div>
