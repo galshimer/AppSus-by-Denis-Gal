@@ -41,15 +41,14 @@ function query(filterBy = {}) {
 
             if (filterBy.txt) {
                 const regExp = new RegExp(filterBy.txt, 'i');
-                mails = mails.filter(mail => 
+                mails = mails.filter(mail =>
                     regExp.test(mail.subject) || regExp.test(mail.body)
                 );
             }
 
-            return mails;
-        });
+            return mails
+        })
 }
-
 
 function get(mailId) {
     return storageService.get(MAIL_KEY, mailId)
@@ -62,7 +61,7 @@ function remove(mailId) {
 
 function save(mail) {
     if (mail.id) {
-        return storageService.put(MAIL_KEY, MAIL)
+        return storageService.put(MAIL_KEY, mail)
     } else {
         return storageService.post(MAIL_KEY, mail)
     }

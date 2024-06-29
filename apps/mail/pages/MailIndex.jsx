@@ -1,24 +1,26 @@
 import { mailService } from "../services/mail.service.js"
 import { MailList } from '../cmps/MailList.jsx'
 import { MailFilter } from '../cmps/MailFilter.jsx'
+import { MailFolderList } from '../cmps/MailFolderList.jsx'
 
 const { useEffect, useState } = React
 
 export function MailIndex() {
-    const [emails, setEmails] = useState([])
+    const [mails, setMails] = useState([])
     const [filterBy, setFilterBy] = useState({ txt: '' })
-    const [filteredEmails, setFilteredEmails] = useState([])
+    const [filteredMails, setFilteredMails] = useState([])
 
     useEffect(() => {
-        mailService.query().then(fetchedEmails => {
-            setEmails(fetchedEmails)
-            setFilteredEmails(fetchedEmails)
-        })
+        mailService.query()
+            .then(fetchedMails => {
+                setMails(fetchedMails)
+                setFilteredMails(fetchedMails)
+            })
     }, [])
 
     useEffect(() => {
         filterEmails()
-    }, [filterBy, emails])
+    }, [filterBy, mails])
 
     const handleSetFilter = (newFilter) => {
         setFilterBy(newFilter)
@@ -27,21 +29,46 @@ export function MailIndex() {
     const filterEmails = () => {
         const { txt } = filterBy
         if (!txt) {
-            setFilteredEmails(emails)
+            setFilteredMails(mails)
             return
         }
         const regExp = new RegExp(txt, 'i')
-        const filtered = emails.filter(mail =>
+        const filtered = mails.filter(mail =>
             regExp.test(mail.subject) || regExp.test(mail.body)
         )
-        setFilteredEmails(filtered)
+        setFilteredMails(filtered)
+    }
+
+    function onToggleStarred(mail) {
+        mail.isStarred = !mail.isStarred
+        mailService
+            .save(mail)
+            .then(updatedMail => {
+                setMails(prevMails =>
+                    prevMails.map(mail =>
+                        mail.id === updatedMail.id ? updatedMail : mail
+                    )
+                )
+            })
+            .catch(err => console.error('Failed to star the mail:', err))
     }
 
     return (
         <section className="mail-index">
             <div className="list-filter-container">
-            <MailFilter filterBy={filterBy} onSetFilter={handleSetFilter} />
-            <MailList mails={filteredEmails} onRemoveMail={(id) => setEmails(emails.filter(mail => mail.id !== id))} />
+                <MailFolderList
+                    // onSetFilter={onSetFilter}
+                    // filterBy={{ folder }}
+                    // unreadCount={unreadCount}
+                    
+                />
+                <MailFilter
+                    filterBy={filterBy}
+                    onSetFilter={handleSetFilter} />
+                <MailList
+                    mails={filteredMails}
+                    onRemoveMail={(id) => setMails(mails.filter(mail => mail.id !== id))}
+                    onToggleStarred={onToggleStarred} />
             </div>
         </section>
     )

@@ -13,8 +13,8 @@ const { Link } = ReactRouterDOM
 
 export function MailPreview({ mail, onRemoveMail }) {
 
-    const { subject, body, from, createdAt } = mail;
-    function onDeleteMail(ev) {
+    const { subject, body, from, createdAt, isRead } = mail;
+    function DeleteMail(ev) {
         console.log(ev)
         ev.stopPropagation()
         onRemoveMail(mail.id)
@@ -22,7 +22,7 @@ export function MailPreview({ mail, onRemoveMail }) {
     const date = new Date(createdAt)
     const formattedDate = new Intl.DateTimeFormat('en-US', {month: 'short', day: '2-digit'}).format(date)
     return (
-        <article className="mail-preview" >
+        <article className={`mail-preview ${isRead ? 'read' : ''}`}>
             <p className="mail-from">{from}</p>
             <div className="divider"></div>
             <div className="mail-info">
@@ -30,11 +30,11 @@ export function MailPreview({ mail, onRemoveMail }) {
                 <span className="mail-body">- {body}</span> 
             </div>
             <div className="mail-actions">
-                <span className="material-symbols-outlined remove-btn" onClick={onDeleteMail}>
+                <span className="material-symbols-outlined remove-btn" onClick={DeleteMail}>
                     delete
                 </span>
             </div>
             <p className="mail-date">{formattedDate}</p>
         </article>
-    );
+    )
 }
